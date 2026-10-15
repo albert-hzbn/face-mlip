@@ -113,3 +113,9 @@ Pending manual step: after `runs/eth_gen2_cp160_ft_ethanol.log` shows TEST, run 
 | published MACE (256 ch, L=2, float64) | 2.2 / 6.6 | 0.4 / 2.1 | ≈0.12× |
 
 Full experiment log: `docs/FACE.md`. Literature review: `docs/literature_review.md`.
+
+## 7. Update (side session, 2026-10-15 18:40)
+Ethanol gen-2 FACE pipeline completed: CP C160 gen-2 + DFT fine-tune **0.619 / 3.716** (energy-weighted ft 0.636 / 3.680);
+recorded in docs/FACE.md §4.31. face/train.py now saves `runs/<tag>_<mol>_last.pt` every logging step (crash resume).
+Malonaldehyde breadth test remains stopped (not resumed). Manuscript tables not yet updated with aspirin 2.26 / 6.74 or
+ethanol 0.62 / 3.72.

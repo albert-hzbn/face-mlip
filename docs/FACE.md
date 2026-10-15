@@ -472,3 +472,19 @@ The DFT-only fine-tune of §4.23 still used force-weighted loss for half its epo
 | published MACE (256 ch, L=2, float64) | 2.2 | 6.6 |
 Single-model gap to the best published model on aspirin: energy ≈3 %, forces ≈2 %, at ≈2× MACE-small speed
 (the published configuration runs at ≈0.12× MACE-small on this GPU and OOMs at 1,344 atoms).
+
+### 4.31 Ethanol, generation 2 (teacher = 3 CP models + gen-1 distilled: 0.60 / 3.73; wide CP C160 student)
+Run under GPU-driver instability on a shared GPU (nvlddmkm Event 13/153 resets) and two RAM-watchdog aborts;
+completed via periodic EMA checkpoints (`runs/<tag>_<mol>_last.pt`, added to face/train.py) and automatic resume.
+| single model, ethanol | E MAE (meV) | F MAE (meV/Å) |
+|---|---|---|
+| MACE-small, 400 epochs, same protocol | 1.11 | 6.76 |
+| CP C96 gen-1, distilled + ft (previous best) | 0.68 | 4.22 |
+| CP C160 gen-2 student | 0.676 | 3.98 |
+| **CP C160 gen-2 + DFT fine-tune** | **0.619** | **3.716** |
+| CP C160 gen-2 + energy-weighted fine-tune | 0.636 | 3.680 |
+| published MACE (256 ch, L=2, float64) | 0.4 | 2.1 |
+Forces −12 % vs gen-1; vs MACE-small at equal protocol −45 % F, −44 % E. Unlike aspirin, the energy-weighted fine-tune
+does not improve ethanol energy (within noise of the standard fine-tune). Gap to the large published MACE remains
+≈1.75× in F. Logs: runs/eth_gen2_cp160_ethanol_{try*,r*,s*}.log, runs/eth_gen2_cp160_ft_ethanol.log,
+runs/eth_gen2_eft_ethanol.log.

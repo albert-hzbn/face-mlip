@@ -1033,8 +1033,13 @@ published GotenNet$^a$\cite{aykent2025gotennet} & 1.55 & 5.66 \\
 \FACE{} trails the published best values considerably more than on aspirin (single models 0.74--0.78/
 4.7--4.9 vs 0.4/2.1). A control resolves this: MACE-small trained with the identical 400-epoch protocol reaches
 1.11/6.76, so \FACE{} is about 30\% more accurate than MACE-small at equal training, and the gap to the published
-number reflects the much larger float64 MACE configuration and its longer training. Distillation from a three-model
-teacher improves the single \FACE-CP model to 0.68/4.22. Ethanol has a low-barrier methyl and hydroxyl rotation, and
+number reflects the much larger float64 MACE configuration and its longer training. Distillation improves the single
+model further. A first generation with a three-model teacher gives 0.68/4.22. A second generation, whose four-model
+teacher includes the first student (teacher error 0.60/3.73) and whose student is a wider \FACE-CP with $C=160$, gives
+0.62/3.72 after the DFT-only fine-tune: the single student now matches its teacher, and its force error is 45\% below
+that of MACE-small under the same protocol. Unlike for aspirin, an additional energy-weighted fine-tune did not lower
+the ethanol energy error (0.64/3.68). The gap to the published MACE value (0.4/2.1) remains about 1.8-fold in the
+forces. Ethanol has a low-barrier methyl and hydroxyl rotation, and
 its small size gives only eight neighbours per atom on average; both make it more sensitive to the description of
 torsions than aspirin.
 
