@@ -1,0 +1,51 @@
+{
+ "atoms": 1344,
+ "MACE 32": {
+  "us_per_atom_loaded": 297.0748065481963,
+  "time_rel_MACE64": 0.5770512246513866
+ },
+ "MACE 64": {
+  "us_per_atom_loaded": 514.8153125013605,
+  "time_rel_MACE64": 1.0
+ },
+ "MACE 128": {
+  "us_per_atom_loaded": 965.0059077362779,
+  "time_rel_MACE64": 1.8744700950085433
+ },
+ "FACE C32": {
+  "us_per_atom_loaded": 83.78479166519053,
+  "time_rel_MACE64": 0.16274727971493488
+ },
+ "FACE C64": {
+  "us_per_atom_loaded": 86.53238095402706,
+  "time_rel_MACE64": 0.1680843184978077
+ },
+ "FACE C96": {
+  "us_per_atom_loaded": 93.29261904765319,
+  "time_rel_MACE64": 0.18121570353913408
+ },
+ "FACE C128": {
+  "us_per_atom_loaded": 100.36916666996106,
+  "time_rel_MACE64": 0.19496150217889222
+ },
+ "FACE C192": {
+  "us_per_atom_loaded": 117.73876488275293,
+  "time_rel_MACE64": 0.22870097688176633
+ },
+ "FACE C256": {
+  "us_per_atom_loaded": 139.6176041669692,
+  "time_rel_MACE64": 0.27119940059397557
+ },
+ "FACE-CP C64": {
+  "us_per_atom_loaded": 136.33473213953297,
+  "time_rel_MACE64": 0.2648226049786985
+ },
+ "FACE-CP C96": {
+  "us_per_atom_loaded": 175.83438988194325,
+  "time_rel_MACE64": 0.3415484846936805
+ },
+ "FACE-CP C160": {
+  "us_per_atom_loaded": 258.8350446439151,
+  "time_rel_MACE64": 0.5027726222561244
+ }
+}

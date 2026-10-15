@@ -1,0 +1,3 @@
+D:\Work\MLIP\face-mlip\tools\paper_data.py:54: DeprecationWarning: Use thermalize_momenta
+  MaxwellBoltzmannDistribution(at, temperature_K=500, rng=rng); Stationary(at); ZeroRotation(at)
+runs/paper_langevin_aspirin.npz wall 1708 s mean T 507.1

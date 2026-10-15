@@ -1,0 +1,5 @@
+11013 structures, elements [np.int64(47)], terms [], params 788290
+{"E_MAE_meV_atom": 1220.968, "E_RMSE_meV_atom": 1227.715, "F_MAE_meV_A": 67.003, "F_RMSE_meV_A": 127.935, "epoch": 0, "time": 50.255}
+{"E_MAE_meV_atom": NaN, "E_RMSE_meV_atom": NaN, "F_MAE_meV_A": NaN, "F_RMSE_meV_A": NaN, "epoch": 10, "time": 548.925}
+{"E_MAE_meV_atom": NaN, "E_RMSE_meV_atom": NaN, "F_MAE_meV_A": NaN, "F_RMSE_meV_A": NaN, "epoch": 20, "time": 889.841}
+{"E_MAE_meV_atom": NaN, "E_RMSE_meV_atom": NaN, "F_MAE_meV_A": NaN, "F_RMSE_meV_A": NaN, "epoch": 30, "time": 1098.786}

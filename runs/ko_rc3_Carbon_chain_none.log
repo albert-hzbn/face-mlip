@@ -1,0 +1,9 @@
+10019 structures, elements [np.int64(1), np.int64(6)], terms [], params 789250
+{"E_MAE_meV_atom": 235.014, "E_RMSE_meV_atom": 235.154, "F_MAE_meV_A": 486.769, "F_RMSE_meV_A": 791.28, "epoch": 0, "time": 22.063}
+{"E_MAE_meV_atom": 21.998, "E_RMSE_meV_atom": 22.042, "F_MAE_meV_A": 62.295, "F_RMSE_meV_A": 91.454, "epoch": 10, "time": 236.596}
+{"E_MAE_meV_atom": 21.158, "E_RMSE_meV_atom": 21.221, "F_MAE_meV_A": 43.722, "F_RMSE_meV_A": 64.518, "epoch": 20, "time": 451.432}
+{"E_MAE_meV_atom": 19.429, "E_RMSE_meV_atom": 19.5, "F_MAE_meV_A": 38.124, "F_RMSE_meV_A": 56.496, "epoch": 30, "time": 666.305}
+{"E_MAE_meV_atom": 17.087, "E_RMSE_meV_atom": 17.115, "F_MAE_meV_A": 33.903, "F_RMSE_meV_A": 50.252, "epoch": 40, "time": 881.847}
+{"E_MAE_meV_atom": 0.698, "E_RMSE_meV_atom": 0.874, "F_MAE_meV_A": 32.066, "F_RMSE_meV_A": 47.641, "epoch": 50, "time": 1096.605}
+{"E_MAE_meV_atom": 0.654, "E_RMSE_meV_atom": 0.832, "F_MAE_meV_A": 31.941, "F_RMSE_meV_A": 47.463, "epoch": 59, "time": 1290.384}
+TEST {"E_MAE_meV_atom": 0.707, "E_RMSE_meV_atom": 0.938, "F_MAE_meV_A": 32.751, "F_RMSE_meV_A": 48.354}

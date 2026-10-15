@@ -1,0 +1,35 @@
+11013 structures, elements [np.int64(47)], terms ['coulomb'], params 792580
+{"E_MAE_meV_atom": 454.123, "E_RMSE_meV_atom": 531.729, "F_MAE_meV_A": 120.728, "F_RMSE_meV_A": 201.246, "epoch": 0, "time": 22.51}
+non-finite loss, step skipped (total 1)
+non-finite loss, step skipped (total 2)
+non-finite loss, step skipped (total 3)
+non-finite loss, step skipped (total 4)
+non-finite loss, step skipped (total 5)
+{"E_MAE_meV_atom": 10.847, "E_RMSE_meV_atom": 12.715, "F_MAE_meV_A": 14.432, "F_RMSE_meV_A": 30.412, "epoch": 10, "time": 265.776}
+non-finite loss, step skipped (total 6)
+non-finite loss, step skipped (total 7)
+non-finite loss, step skipped (total 8)
+non-finite loss, step skipped (total 9)
+{"E_MAE_meV_atom": 7.68, "E_RMSE_meV_atom": 10.895, "F_MAE_meV_A": 10.814, "F_RMSE_meV_A": 24.408, "epoch": 20, "time": 527.769}
+non-finite loss, step skipped (total 10)
+non-finite loss, step skipped (total 11)
+non-finite loss, step skipped (total 12)
+non-finite loss, step skipped (total 13)
+{"E_MAE_meV_atom": 7.053, "E_RMSE_meV_atom": 10.628, "F_MAE_meV_A": 8.264, "F_RMSE_meV_A": 18.459, "epoch": 30, "time": 744.271}
+non-finite loss, step skipped (total 14)
+non-finite loss, step skipped (total 15)
+{"E_MAE_meV_atom": 6.869, "E_RMSE_meV_atom": 10.292, "F_MAE_meV_A": 6.944, "F_RMSE_meV_A": 15.298, "epoch": 40, "time": 959.473}
+non-finite loss, step skipped (total 16)
+non-finite loss, step skipped (total 17)
+non-finite loss, step skipped (total 18)
+non-finite loss, step skipped (total 19)
+{"E_MAE_meV_atom": 1.868, "E_RMSE_meV_atom": 3.125, "F_MAE_meV_A": 8.585, "F_RMSE_meV_A": 17.656, "epoch": 50, "time": 1153.68}
+non-finite loss, step skipped (total 20)
+non-finite loss, step skipped (total 21)
+non-finite loss, step skipped (total 22)
+non-finite loss, step skipped (total 23)
+non-finite loss, step skipped (total 24)
+non-finite loss, step skipped (total 25)
+non-finite loss, step skipped (total 26)
+{"E_MAE_meV_atom": 1.803, "E_RMSE_meV_atom": 3.033, "F_MAE_meV_A": 8.576, "F_RMSE_meV_A": 17.72, "epoch": 59, "time": 1248.505}
+TEST {"E_MAE_meV_atom": 1.936, "E_RMSE_meV_atom": 3.142, "F_MAE_meV_A": 9.711, "F_RMSE_meV_A": 20.746}

@@ -1,0 +1,1 @@
+runs/mace/mace400_ethanol_stagetwo.model {"E_MAE": 1.106, "E_RMSE": 1.731, "F_MAE": 6.757, "F_RMSE": 12.016}

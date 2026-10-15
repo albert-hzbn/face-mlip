@@ -1,0 +1,51 @@
+{
+ "args": {
+  "mol": "ethanol",
+  "C": 96,
+  "passes": 2,
+  "rc": 5.0,
+  "nbasis": 8,
+  "epochs": 3,
+  "bs": 5,
+  "lr": 0.01,
+  "wF": 1000.0,
+  "wE": 1.0,
+  "swa_frac": 0.25,
+  "ema": 0.99,
+  "terms": "",
+  "dtype": "float32",
+  "seed": 0,
+  "tag": "eth_dbg",
+  "norm": "layer",
+  "transport": 1,
+  "saturate": 0,
+  "standardise": 1,
+  "eqmsg": 1,
+  "factor": 1,
+  "B": 32,
+  "K": 32,
+  "kdir": 16,
+  "radial_hidden": 64,
+  "max_test": 1000
+ },
+ "params": 1997506,
+ "test_E_meV": 3692.3938598632812,
+ "test_F_meV_A": 871.0989357277199,
+ "train_time_s": 87.61058282852173,
+ "log": [
+  {
+   "epoch": 0,
+   "loss": 409.2780536852385,
+   "val_E": 3675.8642578125,
+   "val_F": 884.5969871238426,
+   "time": 29.069804191589355
+  },
+  {
+   "epoch": 2,
+   "loss": 0.0,
+   "val_E": 3675.8642578125,
+   "val_F": 884.5969871238426,
+   "time": 86.02125477790833
+  }
+ ]
+}

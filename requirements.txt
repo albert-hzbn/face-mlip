@@ -1,0 +1,11 @@
+# Python 3.12; versions used for all results in docs/FACE.md and the manuscript
+torch==2.6.0            # CUDA 12.4 build: pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+numpy==2.5.4
+scipy==1.18.1
+ase==3.29.0
+psutil==7.2.2           # resource guards (face/safety.py)
+cupy-cuda13x==14.2.0    # optional: fused NVRTC kernels (inference only); matches the local CUDA toolkit
+matplotlib==3.11.2      # figures
+# baselines (comparison only)
+mace-torch==0.3.16
+e3nn==0.4.4

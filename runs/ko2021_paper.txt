@@ -1,0 +1,790 @@
+arXiv:2009.06484v1 [cond-mat.mtrl-sci] 14 Sep 2020  A Fourth-Generation High-Dimensional Neural Network Potential with Accurate
+                                                                          Electrostatics Including Non-local Charge Transfer
+
+                                                                          Tsz Wai Ko,1,  Jonas A. Finkler,2,  Stefan Goedecker,2 and J®org Behler1
+                                                                                            1Universita®t G®ottingen, Institut fu®r Physikalische Chemie,
+
+                                                                                    Theoretische Chemie, Tammannstraﬂe 6, 37077 Go®ttingen, Germany
+                                                                      2Department of Physics, Universit®at Basel, Klingelbergstrasse 82, 4056 Basel, Switzerland
+
+                                                                                                                 (Dated: September 15, 2020)
+
+                                                                    Machine learning potentials have become an important tool for atomistic simulations in many
+                                                                 fields, from chemistry via molecular biology to materials science. Most of the established methods,
+                                                                 however, rely on local properties and are thus unable to take global changes in the electronic structure
+                                                                 into account, which result from long-range charge transfer or different charge states. In this work
+                                                                 we overcome this limitation by introducing a fourth-generation high-dimensional neural network
+                                                                 potential that combines a charge equilibration scheme employing environment-dependent atomic
+                                                                 electronegativities with accurate atomic energies. The method, which is able to correctly describe
+                                                                 global charge distributions in arbitrary systems, yields much improved energies and substantially
+                                                                 extends the applicability of modern machine learning potentials. This is demonstrated for a series
+                                                                 of systems representing typical scenarios in chemistry and materials science that are incorrectly
+                                                                 described by current methods, while the fourth-generation neural network potential is in excellent
+                                                                 agreement with electronic structure calculations.
+
+                                                                           I. INTRODUCTION                     coworkers published in 1995 [8], the first generation
+                                                                                                               (1G) of ML potentials [19, 20] has been applicable
+                                                       Computer simulations nowadays have become an            to low-dimensional systems depending on the positions
+                                                    important tool in many fields of science like chemistry,   of a few atoms only. This restriction has been
+                                                    molecular biology, physics and materials science. The      overcome in high-dimensional neural network potentials
+                                                    quality, and thus the predictive power, of the results     (HDNNP) proposed by Behler and Parrinello in 2007 [9],
+                                                    obtained in these simulations crucially depends on the     which represented the first ML potential of the second
+                                                    accurate description of the atomic interactions. While     generation (2G). In this generation, which employs the
+                                                    electronic structure methods like density functional       concept of nearsightedness [21], the total energy of the
+                                                    theory (DFT) provide a reliable description of many        system is constructed as a sum of atomic energies, which
+                                                    types of systems, the high computational costs of          depend on the local chemical environment up a cutoff
+                                                    DFT restrict its application in molecular dynamics         radius and ≠ in case of HDNNPs ≠ are computed by
+                                                    (MD) [1] and Monte Carlo [2] simulations to a few          individual atomic neural networks. Most modern ML
+                                                    hundred atoms preventing the investigation of many         potentials making use of different ML algorithms, like
+                                                    interesting phenomena. Larger systems can be studied by    HDNNPs, GAPs, MTPs and SNAPs, belong to this
+                                                    more efficient atomistic potentials, which avoid solving   second generation, and as standard methods for atomistic
+                                                    the electronic structure problem on-the-fly but instead    simulations they have been successfully applied to a wide
+                                                    provide a direct functional relation between the atomic    range of systems.
+                                                    positions and the potential energy. Atomistic potential
+                                                    energy surfaces (PES) have been developed for many            A limitation of 2G ML potentials, which are applicable
+                                                    types of systems, and most of these potentials are based   to tens of thousands of atoms, is the neglect of
+                                                    on physical approximations, which necessarily limit the    long-range interactions, i.e. electrostatics beyond the
+                                                    accuracy of the obtained results.                          cutoff radius, but also dispersion interactions, which
+                                                                                                               may substantially accumulate for condensed systems,
+                                                       With the advent of machine learning (ML) potentials     are often truncated. This possible source of error, in
+                                                    [3≠7] in recent year an alternative approach to the        particular for ionic systems, has been recognized early,
+                                                    construction of PESs has emerged, which allows to          and electrostatic corrections based on fixed charges have
+                                                    combine the accuracy of quantum mechanical electronic      been proposed [13, 22]. In more flexible third generation
+                                                    structure calculations with the efficiency of simple       (3G) ML potentials, long-range electrostatic interactions
+                                                    empirical potentials. Many types of ML potentials have     are included by constructing environment-dependent
+                                                    been proposed to date, like neural network potentials      atomic charges, which in case of 3G-HDNNPs are
+                                                    [8≠12], Gaussian approximation potentials (GAP) [13],      expressed by a second set of atomic neural networks [23,
+                                                    moment tensor potentials (MTPs) [14], spectral neighbor    24]. These charges can then be used in standard
+                                                    analysis potentials (SNAP) [15] and many others [16, 17].  algorithms like the Ewald sum [25] to compute the full
+                                                                                                               long-range electrostatic energy. Due to the additional
+                                                       ML potentials can be classified into four different     effort in constructing and using 3G ML potentials,
+                                                    generations [18]. Starting with the work of Doren and
+                                                                2
+
+most applications have been reported for molecular              (b), like OH or SH, different partial charges, which we use
+systems [12, 26, 27], while in simulations of condensed         in this work as a qualitative fingerprint of the electronic
+systems they are rarely used, as often long-range               structure, are obtained as shown in the plots of the DFT
+electrostatic interactions are efficiently screened.            Hirshfeld charges on the right hand side. In particular the
+                                                                charge of the right oxygen atom depends on the choice of
+ a)                                                             X, although it is far outside its local atomic environment
+                                                                displayed as dashed circle. As a consequence, ML
+                structures  charges                             potentials relying on a local description, like 2G- and
+                                                                3G-HDNNPs, cannot distinguish these systems and the
+b)                                                    -0.4      same charge is assigned to right oxygen in both molecules,
+                                                                which is chemically incorrect. A second problem is
+   HOC7H7O                                                      illustrated in Fig. 1c. In this case the OH group on
+                                                                the left is deprotonated resulting in a negative ion with
+    HSC7H7O                 +0.2                                two equivalent oxygen atoms equally sharing the negative
+                                                                charge. This charge is very different from the charge in
+c)                                                              the carbonyl oxygen of the neutral molecule. Still, again,
+                                                                the local environment of the carbonyl oxygen atom is
+    HOC7H7O                 -0.4                                identical, which is why 2G and 3G ML potentials cannot
+                                                                be applied to multiple charge states.
+    OC7H7O-                 +0.2
+                                                                   This limitation of local atomistic potentials in
+FIG. 1. Illustration of long-range charge transfer in a         the description of long-range charge transfer and of
+molecular system XC7H7O with X representing different           systems in different charge states has been recognized
+functional groups. In (a) the investigated molecule is shown.   already some time ago, and for simple empirical force
+For X=OH and X=SH (b) the different electronegativities of      fields different solutions have been proposed [31≠35].
+oxygen and sulfur result in different charges of the carbonyl   In the context of ML potentials the first method
+oxygen atom as can be seen in the plot of the DFT atomic        that has been proposed to address this problem is
+partial charges on the right side. In both cases, the local     the charge equilibration via neural network technique
+chemical environments of the carbonyl oxygen atoms are          (CENT) approach [36≠38]. In this method, a charge
+identical within the cutoff spheres shown as dashed circles.    equilibration [31] scheme is applied, which allows for a
+In (c) the deprotonation of the OH group yields a negative      global redistribution of the charge over the full system
+ion and both oxygen atoms become chemically equivalent          to minimize a charge-dependent total energy expression.
+with the same negative partial charge. Also in this case the    The charges are based on atomic electronegativities,
+chemical environment of the right oxygen atom is identical to   which are determined as a function of the local chemical
+the neutral molecule although the charge distribution differs.  environment and expressed by atomic neural networks
+All these cases cannot be correctly described by local methods  similar to the charges in 3G-HDNNPs. This method has
+like 2G and 3G ML potentials. The structure visualization for   enabled the inclusion of long-range charge transfer in a
+non-periodic systems was carried out using Ovito [28].          ML framework for the first time, but due to the employed
+                                                                energy expression this method is primarily applicable to
+   A remaining limitation of 3G ML potentials is their          ionic systems [39≠41], and the overall accuracy is still
+inability to describe long-range charge transfer and            lower than in case of other state-of-the-art ML potentials.
+different charge states of a system, since the atomic           Recently, another promising method has been proposed
+partial charges are expressed as a function of the local        by Xie, Persson and Small [42] aiming for a correct
+chemical environment only. Neglecting non-local charge          description of systems with different charge states. In
+transfer and changes in the global charge distribution,         this method, atomic neural networks are used, which do
+which can be important in many systems [29, 30], can            not only depend on the local structure but also on atomic
+result in qualitative failures as illustrated in Fig. 1 for     populations, which are determined in a self-consistent
+the molecular model system XC7H7O displayed in panel            process. The training data for different populations has
+(a). Depending on the choice of the functional group X in       been generated using constrained DFT [43] calculations,
+                                                                and a first application for LinHn clusters has been
+                                                                reported.
+
+                                                                   In the present work, we propose a general solution for
+                                                                the limitations of current ML potentials by introducing
+                                                                a fourth generation (4G) HDNNP, which is applicable
+                                                                to long-range charge transfer and multiple charge
+                                                                states. It consists of highly accurate short-range
+                                                                atomic energies similar to those used in 2G-HDNNPs
+                                                                                                                            3
+
+and charges determined from a charge equilibration          type chemically equivalent, while the specific values of
+method relying on electronegativities in the spirit of      the electronegativities depend on the positions of all
+the CENT approach. Both, the short-range atomic             neighboring atoms inside a cutoff sphere of radius Rc.
+energies as well as the electronegativities are expressed   The positions of the neighboring atoms inside this sphere
+by atomic neural networks as a function of the chemical     are specified by a vector Gi of atom-centered symmetry
+environments. The capabilities of the method are            functions [45], which ensures the translational, rotational
+illustrated for a series of model systems showcasing        and permutational invariance of the electronegativities.
+typical scenarios in chemistry and materials science
+that cannot be correctly described by conventional             To predict the atomic charges, which are represented
+ML potentials. For all these systems we demonstrate         by Gaussian charge densities of width i taken from
+that 4G-HDNNPs trained to DFT data are able to              the covalent radii of the respective elements, a charge
+provide reliable energies, forces and charges in excellent  equilibration scheme [46] is used. In this scheme, the
+agreement with electronic structure calculations. In        charge is distributed among the atoms in an optimal way
+Section II the methodology of 4G-HDNNPs is introduced       to minimize the energy expression
+and the relation to other generations of HDNNPs and
+the CENT method is discussed. The results for a series                                 Nat               1
+of periodic and non-periodic benchmark systems are                                                       2
+presented in Section III, including a detailed comparison         EQeq  =  Eelec    +       iQi       +     JiQ2i    ,      (2)
+to the performance of 2G- and 3G-HDNNPs. We show
+that previous generations of HDNNPs, which are unable                                  i=1
+to take distant structural changes into account, yield
+inaccurate energies and forces, and even distinct local     with Eelec being the electrostatic energy of the Gaussian
+minima of the PES can be missed while they are correctly    charges and Ji the element-specific hardness, which is
+resolved by the 4G-HDNNP. These results are general         optimized in the training process of the 4G-HDNNP
+and equally apply to other types of 2G ML potentials.       along with the electronegativities. For the electrostatic
+                                                            energy we then obtain
+                             II. METHOD
+                                                                      Nat Nat erf   rij          QiQj +                Qi2  (3)
+   The overall structure of the 4G-HDNNP is shown           Eelec =                    2ij                           2i 
+schematically in Fig. 2 for an arbitrary binary system.                                                     i
+Like in 3G-HDNNPs the total energy consists of a                           i=1 j<i  rij
+short-range part, which, as we will see below, requires
+in addition non-local information, and an electrostatic     with
+long-range part, which is not truncated,
+                                                                           ij = i2 + j2 .                                   (4)
+       Etotal(R,Q) = Eelec(R,Q) + Eshort(R,Q) . (1)
+                                                            To solve this minimization problem the derivatives of
+The electrostatic part Eelec(R,Q) depends on a set of       EQeq with respect to the charges Qi are calculated and
+atomic charges Q = {Qi}, which are trained to reference     set to zero,
+charges obtained in DFT calculations, and the positions
+of the atoms R = {Ri}. An important difference              EQeq  = 0, i = 1, .., Nat  =            Nat                     (5)
+to 3G-HDNNPs is that these charges are not directly          Qi
+expressed by atomic neural networks as a function of                                                    Aij Qj + i = 0
+the local atomic environments, but they are obtained
+indirectly from a charge equilibration scheme based on                                              j=1
+atomic electronegativities {i} that are adjusted to yield
+charges in agreement with the DFT reference charges,        where the elements of the matrix A are given by
+which here we choose to be Hirshfeld charges [44], but
+many choices are in principle possible.                                                   1
+                                                                                       i 
+   Like in the CENT approach the atomic                                    Ji       +            ,    if i = j
+electronegativities are local properties defined as a
+function of the atomic environments using atomic neural             [A]ij = erf rij                                         (6)
+networks. As in 2G- and 3G-HDNNPs there is one type
+of atomic neural network with a fixed architecture per                                    2ij    ,    otherwise
+element in the system making all atoms of the same                         
+                                                                                       rij
+
+                                                            Considering the constraint that the sum of all charges
+                                                            must be equal to the total charge Qtot of the system, the
+                                                            following set of linear equations is solved by including
+                                                            this constraint via the Lagrange multipliers,
+
+                                                                           1   Q1   -1 
+
+                                                                  A        ...              ...                 ...         (7)
+                                                                                                    =                
+                                                                  
+
+                                                                           1           QNat              -Nat        
+                                                                                                                     
+
+                                                                    1 ... 1 0                               Qtot
+
+                                                            Overall, this process is like in the CENT [36], but
+                                                                                                             4
+
+ Cartesian   Symmetry  Atomic       Atomic                                             Atomic
+Coordinates  Funcons    NNs    Electronegavies                                         Charges
+
+   Ra1        Ga1                   a                                                   Q1a
+                                         1
+
+RNaa         GaNa              Naaa                                Charge Equilibraon  QNaaa    Eelec
+                                                                                       Q1b
+Rb1          Gb1                 b
+                                 1
+
+RNbb         GbNb              b                                                       QNbb
+                                 Nb
+
+b            b                   ab                                                    ab       Etotal
+
+ Cartesian   Symmetry  Atomic                              Atomic
+Coordinates  Funcons    NNs                                Energy
+
+   Ra1         Ga1                                         E  a
+                                                              1
+
+RNaa         GaNa                                          ENaa                                 Eshort
+
+Rb1          Gb1                                           E  b
+                                                              1
+
+RNbb         GbNb                                          ENbb
+
+FIG. 2. Schematic structure of a 4G-HDNNP for a binary system containing Na atoms of element a and Nb atoms of element
+b. The total energy consists of a short-range energy Eshort, which is a sum of atomic energies Ei, and a long-range electrostatic
+energy Eelec computed from atomic charges Qi. The atomic charges are determined by a charge equilibration method using
+environment-dependent atomic electronegativies i expressed by atomic neural networks (red). These charges are then used
+to calculate the electrostatic energy and in addition serve as non-local input for the short range atomic neural networks (blue)
+yielding the Ei. The geometric atomic environments are described by atom-centered symmetry function vectors Gi, which
+depend on the Cartesian coordinates Ri of the atoms and serve as inputs for the atomic neural networks.
+
+the main difference is in the training process. While in         intermediate global charge equilibration step ensures that
+CENT only the error with respect to the DFT energies             these charges depend on the atomic positions, chemical
+is minimized, the atomic charges obtained during the             composition and total charge of the entire system, and
+charge equilibration process serve merely as intermediate        thus in contrast to 3G-HDNNPs non-local charge transfer
+quantities, which do not have a strict physical meaning.         is naturally included.
+In the 4G-HDNNP proposed in this work, the charges
+are trained directly to reproduce reference charges                 In a second step, the local atomic energy contributions
+from DFT, which therefore are qualitatively meaningful           yielding the short-range energy according to
+although one should be aware that atomic partial charges
+are no physical observables and different partitioning                                          Nat
+schemes can yield different numerical values [47].
+                                                                                                Eshort = Ei  (8)
+   Once the atomic electronegativities have been learned,
+a functional relation between the atomic structure                                              i=1
+and the atomic partial charges is available. The
+                                                                 have to be determined. Like in 2G-HDNNPs the
+                                                                 short range atomic energies are provided by individual
+                                                                 atomic neural networks based on information about
+                                                                                                               5
+
+the chemical environments. An important difference            a)                                  12
+to 2G-HDNNPs is that the atomic energies in addition                    1
+depend on non-local information that is provided to the                    12        1        11  13
+short-range atomic neural networks by using not only          b)                                    -0.1
+the atom-centered symmetry function values describing         c)
+the positions of the neighboring atoms inside the cutoff                       DFT:                   charges
+spheres, but also the atomic partial charges determined       d)
+in the first step (s. Fig. 2). This information is                            3G-HDNNP            +0.2
+required to take into account changes in the local                         unscaled charges:      -0.1
+electronic structure resulting from possible long-range
+charge transfer, which has an immediate effect on the                      scaled charges:            charges
+local many-body interactions.
+                                                                                                  +0.2
+   The short-range atomic neural networks are then                                                -0.1
+trained to express the remaining part of the total energy
+Eref according to                                                          4G-HDNNP:                  charges
+
+                                                         Nat                                                                                             +0.2
+
+        Eshort = Eref - Eelec = Ei({Gi}, Qi) , (9)            FIG. 3. DFT-optimized structures of C10H2 (left) and
+                                                              C10H+3 (right) with atom IDs (a). Carbon and hydrogen
+                                                         i=1  atoms are colored in grey and white, respectively. The
+                                                              dashed circle shows the cutoff radius of the left carbon atom
+where the electrostatic energy is determined based on         defining its chemical environment. Panel (b) shows the
+the partial charges resulting from the fitted atomic          atomic partial charges obtained from DFT. The unscaled and
+electronegativities. Thus by construction, the goal           scaled 3G-HDNNP charges are displayed in (c), while the
+of the short-range part is to represent all parts of          4G-HDNNP charges are shown in (d).
+the energy that are not covered by the electrostatic
+energy and double counting of energy contributions is         for heterogeneous catalysis. We show that in contrast
+avoided. In addition to the energies, also the forces         to established ML potentials, the 4G-HDNNP is able
+are used for determining the parameters of the short          to reproduce the change in adsorption geometry of the
+range atomic neural networks. In summary, in contrast         cluster if dopant atoms are introduced in the slab far
+to the CENT method, the short range interactions              away from the cluster. In all cases, the 4G-HDNNP PES
+are not described through the charges resulting from          is very close to the results obtained from DFT.
+the charge equilibration process but are described by
+separate short-range neural networks, which enables a                                   Non-Periodic Cases
+more accurate description of the total energy. The
+mathematical details of the 4G-HDNNP method are                               A Benchmark for Organic Molecules
+presented in the supplementary material.
+                                                                 The first model system we study is a linear organic
+           III. RESULTS AND DISCUSSION                        molecule consisting of a chain of ten sp-hybridized carbon
+                                                              atoms terminated by two hydrogen atoms as shown in
+                                  Overview                    Fig. 3a. Molecules of this type have been studied before
+                                                              in electronic structure calculations [48≠50]. For this
+   In this chapter we demonstrate the limitations of          molecule we will now demonstrate the applicability of
+ML potentials based on local properties only and show         4G-HDNNPs to systems with long-range charge transfer
+how they can be overcome by the 4G-HDNNP. For                 induced by protonation, which changes the total charge
+this purpose we use a set of non-periodic and periodic        and the local structure in a part of the system. Since
+systems, which cover a wide range of typical situations       the majority of existing machine learning potentials rely
+in chemistry and materials science. The non-periodic          on local structural information only without explicit
+systems consist of a covalent organic molecule, a small       information about the global charge distribution and
+metal cluster and a cluster of an ionic material covering     total charge, they are not simultaneously applicable to
+very different types of atomic interactions. These
+examples demonstrate the simultaneous applicability of
+a single 4G-HDNNP to systems of different total charges
+and the correct description of long-range charge transfer
+and the associated electrostatic energy. As a periodic
+system we have chosen a small gold cluster adsorbed
+on a MgO(001) slab, which is a prototypical example
+                                                                                              6
+
+both neutral and charged systems.                           TABLE I. Energy error (meV/atom) and mean errors of
+   This is different for 4G-HDNNPs, which naturally         the atomic charges (10-3 e) and forces (eV/∞A) of C10H2
+                                                            and C10H3+ with respect to DFT obtained with the different
+include the correct long-range electrostatic energy for
+any global charge present in the training set. Because      HDNNP generations for the DFT optimized structures.
+of the protonation of the terminal carbon atom, its
+hybridization state changes to sp2 and the electronic                 energy charges forces
+structure of the resulting C10H3+ cation is modified even
+at very large distances along the whole molecule, which     2G-HDNNP  0.684 -- 0.095
+is reflected in the differences of the DFT charges of
+the molecules in Fig. 3b, which have been structurally      C10H2 3G-HDNNP (unscaled) 1.255 19.72 0.430
+optimized by DFT. The geometries of both molecules are                3G-HDNNP (scaled) 2.193 10.76 0.138
+given in the SI.
+                                                            4G-HDNNP  0.463 4.820 0.032
+   Using a data set containing both molecules (see SI),
+we have constructed 2G-, 3G- and 4G-HDNNPs using            2G-HDNNP  0.922                    -- 0.127
+a cutoff radius Rc = 4.23 A∞ as illustrated by the circle                                     17.82 0.658
+in Fig. 3a for the example of the left carbon atom. In      C10H+3 3G-HDNNP (unscaled) 0.046  17.72 0.259
+Fig. 3c we show the atomic partial charges obtained with
+the 3G-HDNNP in two forms: first as unscaled charges        3G-HDNNP (scaled) 1.425
+directly obtained from the atomic neural network fits
+without any constraint for the correct total charge of the  4G-HDNNP  0.176 5.048 0.042
+system, and second rescaled to ensure total charges of
+zero or one, respectively. It can be seen that the scaling  prevents the accurate representation of the energy.
+process does not significantly improve the 3G-HDNNP            To investigate the forces in more detail, in Fig. 4
+charges.
+                                                            we plot the individual atomic forces in both molecules
+   The atoms in the left half of the molecule are           using the 2G-HDNNP and the 4G-HDNNP for the DFT
+far from the added proton such that their atomic            optimized structures. For all atoms in both molecules the
+environments differ only slightly due to the DFT            4G-HDNNP yields very low force errors, with an average
+geometry optimization. In addition, in the training set     error of only 0.037 eV/A∞ underlining the quality of this
+a lot of basically identical environments but different     PES. However, for the 2G-HDNNP the forces acting on
+atomic charges are present for these atoms, which           the left half of C10H+3 and on all atoms in C10H2 the force
+results in high fitting errors due to the contradictory     errors are significantly larger. The reason is again the the
+information. As a consequence the neural networks           2G-HDNNP cannot distinguish both molecules for these
+assign averaged charges to these atoms, which differ        atoms, and the force errors are only low close to the extra
+qualitatively from the DFT reference charges of both        proton in C10H3+, which can be recognized as a distinct
+systems. For instance, the 3G-HDNNP partial charges         local structural feature in the atomic environments of the
+on atom 2, i.e. the left carbon atom, are almost identical  right half of this molecule.
+in both molecules although they are very different in
+DFT. Note that the predicted charges of atoms 1-6 in           Interestingly, the relatively high errors of the
+C10H2 and C10H3+ would be even exactly identical if         2G-HDNNP forces are not matched by high energy
+the latter molecule would not have been relaxed after       errors, which instead are surprisingly low and smaller
+protonation. The charges obtained with the 4G-HDNNP         than 1 meV/atom for both molecules. This suggests
+shown in Fig. 3d, on the other hand, match the DFT          that the total energy predicted by 2G-HDNNPs may
+charges very accurately for both molecules, as they can     benefit from error compensation in the atomic energies
+be distinguished in this method.                            in that the atomic energies in the right half of C10H3+
+                                                            are adjusted to compensate the deficiencies of the atomic
+   The inaccurate charges obtained with the 3G-HDNNP        energies in the left half of the molecule.
+lead to a poor quality of the potential energy surface,
+and the same is observed for the short-range only                                      Metal Clusters: Ag3
+2G-HDNNP. In Table I we compare the errors of the
+total energies as well as the mean errors of the atomic        In this example we investigate a small metal cluster,
+charges and forces of all HDNNP generations for the         Ag3, in two different charge states. The potential
+DFT-optimized structures. It can be seen that the errors    energy surface of small clusters is strongly influenced
+of all quantities obtained for the 4G-HDNNP are much        by the ionization state of the cluster and the ground
+lower than for the 2G- and 3G-HDNNPs. Further, we           state can differ as a function of the total charge of the
+note that in several cases the energies obtained by the     cluster [51≠55]. Due to the small system size there are
+3G-HDNNP are even worse than for the 2G-HDNNP,              no long-range effects, and the full system is included
+as the unphysical charge distribution to some extent        in each atomic environment. Therefore, in principle
+                                                            2G-HDNNPs should be perfectly suited to describe the
+                                                            PES of Ag3, but this is only true as long as the
+                                                                                                                            7
+
+                                                                partial charges of both systems with very high accuracy
+
+                     0.25       2G-HDNNP                        (Fig. 5c). In this case, the inability of the 2G-HDNNP
+                                4G-HDNNP                        to distinguish both clusters is also apparent from the
+
+                     0.20                                       energy errors with respect to DFT. While the energy
+                                                                errors for Ag-3 and Ag+3 obtained from the 4G-HDNNP
+|FNN - FDFT| (eV/≈)
+                     0.15                                       are only about 1.166 meV/atom and 0.320 meV/atom,
+
+                                                                respectively, the errors of the 2G-HDNNP are 0.605 and
+
+                                                                2.017 eV/atom and thus several orders of magnitude
+
+                     0.10                                       larger.
+
+                     0.05                                                Ag+                    Ag-
+
+                     0.00 1 2 3 4 5 At6om7id 8 9 10 11 12       a)                   DFT:                   -0.5
+
+                                                           (a)                                                     charges
+
+                                                                                                            +0.5
+
+                                                                b)                                          -0.5
+
+                                                                                     2G-HDNNP:
+
+                     0.40       2G-HDNNP                                                                           charges
+                                4G-HDNNP
+                     0.35                                                     0.420                  1.291
+                                                                                                               +0.5
+|FNN - FDFT| (eV/≈)  0.30
+
+                     0.25
+
+                     0.20                                       c)                   4G-HDNNP:              -0.5
+
+                     0.15                                                     0.002                  0.006  charges
+
+                     0.10
+
+                     0.05                                                                                                                                     +0.5
+
+                     0.00 1 2 3 4 5 A6tom7 id8 9 10 11 12 13    FIG. 5. Structures and atomic partial charges of Ag+3 and
+                                                                Ag-3 optimized with DFT (a), the 2G-HDNNP (b) and the
+                           (b)                                  4G-HDNNP (c). The numbers give the root mean squared
+                                                                displacement (RMSD) in A∞ compared to the respective
+FIG. 4. 2G- and 4G-HDNNP forces for the atoms in the            DFT minima. The partial charges in (b) are shown for
+DFT-optimized structures of C10H2 (a) and C10H+3 (b).           illustration purposes only and have been obtained from a
+                                                                scaled 3G-HDNNP.
+
+total charge of the system does not change, since for                                        NaCl Cluster Ions
+a combination of data with different total charges, like
+Ag+3 and Ag3-, in the training set the unique relation             As the last non-periodic example we select a system
+between atomic positions and the energy is lost. The            with mainly ionic bonding, which is a positively charged
+minimum-energy structures of both cluster ions obtained         Na9Cl8+ cluster, and we analyze the changes of the
+from DFT are shown in Fig. 5a along with the atomic             PES, if a neutral sodium atom is removed. The initial
+partial charges. After training a 2G-HDNNP and a                structure of the cluster ion has been obtained from a
+4G-HDNNP to data containing both types of clusters,             DFT geometry optimization and is shown in Fig. 6. The
+we have reoptimized the geometries by the respective            sodium atoms are shown in purple, blue, and brown,
+HDNNP generation. As expected, the minima obtained              while the chlorine atoms are displayed in grey. We then
+with the 2G-HDNNP (Fig. 5b) are identical for both              construct a second system by removing the brown sodium
+charge states, but do not agree with any of the DFT             atom from the cluster while keeping the positions of the
+structures. The 4G-HDNNP on the other hand, which               remaining atoms fixed. Since the overall positive charge
+in addition to the structural information also takes            of the cluster is maintained, the charge is redistributed
+the total charge and the resulting partial charges into         throughout the new Na8Cl8+ cluster ion.
+account, is able to predict the minima and also the atomic
+                                                                                                                                               8
+
+FIG. 6. Optimized structure of the Na9Cl8+ cluster. Sodium   Relative energy (eV)  0.14                 DFT (Na9Cl8+ )
+atoms are shown in purple, blue and brown, chlorine atoms                          0.12                 DFT (Na8Cl8+ )
+in grey. The arrow indicates the direction along which the                         0.10                 2G-HDNNP (Na9Cl8+ )
+blue sodium atom is moved for the energy and force plots in                        0.08                 2G-HDNNP (Na8Cl8+ )
+Figs. 7 and 8. The position of this atom is defined by the                         0.06                 3G-HDNNP (Na9Cl8+ )
+Na-Na distance indicated as dashed line.                                           0.04                 3G-HDNNP (Na8Cl8+ )
+                                                                                   0.02                 4G-HDNNP (Na9Cl8+ )
+   To investigate the consequences of this change in                               0.00                 4G-HDNNP (Na8Cl8+ )
+the electronic structure on the PES, we compute and
+compare the energies and forces when moving the blue                                      3.2  3.3 3.4 3.5 3.6
+sodium atom along a one-dimensional path indicated by                                           Na-Na distance (≈)
+the arrow in Fig. 6 for both cluster ions. The distance
+to the closest neighboring sodium atom highlighted as        FIG. 7. Relative energies of all potentials with respect to
+dashed line is used to define the structure.                 the DFT minima of the Na8Cl+8 and the Na9Cl+8 clusters as
+                                                             a function of the Na-Na distance for the the path shown in
+   Fig. 7 shows the energies for both systems obtained
+with DFT as well as the 2G-, 3G- and 4G-HDNNPs. All          Fig. 6. For the 3G-HDNNP unscaled charges have been used
+energies are given as relative energies to the minimum
+DFT energy of the respective cluster ion and refer to the    in this plot.
+full systems. First, we note that the positions of the DFT
+minima differ by more than 0.1 ∞A, i.e., depending on the    Force on Na (eV/≈)    1.00                                   DFT (Na9Cl8+ )
+presence of the very distant brown atom the blue atom                              0.75                                   DFT (Na8Cl8+ )
+adopts different equilibrium positions. The 2G-HDNNP,                              0.50                                   2G-HDNNP (Na9Cl8+ )
+however, is unable to distinguish these minima and                                 0.25                                   2G-HDNNP (Na8Cl8+ )
+instead the same local minimum Na-Na distance is                                   0.00                                   3G-HDNNP (Na9Cl8+ )
+found for both systems, which is approximately the                                 0.25                                   3G-HDNNP (Na8Cl8+ )
+average value of the DFT minima. We note that the                                  0.50                                   4G-HDNNP (Na9Cl8+ )
+2G-HDNNP energy curves of the two systems are not                                  0.75                                   4G-HDNNP (Na8Cl8+ )
+identical but there is an energy offset, as some of the
+atomic environments in the right part of the systems                                      3.2  3.3 3.4 3.5 3.6
+differ yielding different atomic energies. Since these                                          Na-Na distance (≈)
+environments do not change when moving the blue atom
+this offset is constant. For the 3G-HDNNP the same           FIG. 8. Forces acting on the blue sodium atom for the path
+qualitative behavior is observed, and two very similar       shown in Fig. 6. For the 3G-HDNNP unscaled charges have
+but not identical minima are found for both systems.         been used in this plot.
+Still, in case of the 3G-HDNNP the energy offset between
+both systems is not merely a constant anymore, as the        identified and at the right positions.
+long-range electrostatic interactions between the blue
+and the brown atom in Na9Cl8+ are position-dependent.           Next, we turn to the forces shown in Fig 8. The results
+We note that in spite of these qualitative differences with  are fully consistent with our discussion of the energy
+respect to DFT, the 2G- and 3G-HDNNP curves show             curves. The DFT forces acting on the displaced atom are
+only a deviation of about 1 meV per atom from the            different for both cluster ions and well reproduced by the
+DFT curves. This is very small and in the typical order      4G-HDNNP. The 2G-HDNNP forces of both systems are
+of magnitude of state-of-the-art ML potentials, and in       exactly identical due to the constant offset between both
+the present case this apparently high accuracy hides the     energy curves (Fig. 7), while the 3G-HDNNP forces of
+qualitatively wrong minima. Finally, the 4G-HDNNP            both systems are slightly different due to the additionally
+energies for both systems are very accurate and the          included long-range electrostatics.
+energy curves match the corresponding DFT curves
+very closely. Both distinct local minima are correctly
+                                                               9
+
+FIG. 9. Au2 cluster in the non-wetting geometry on the         of the dopant atoms changes the relative stability of both
+undoped (a) and the wetting geometry on Al-doped (b)           structures. On the pure MgO support (Fig. 9a) the
+MgO(001) surface represented by a periodic (3◊3) supercell.    minimum energy structure is "non-wetting", while a flat
+Au atoms are shown in yellow, O in red, Mg in green and Al in  "wetting" geometry is more stable if the MgO is doped
+blue. The configuration of the gold cluster has been optmized  by three aluminium atoms (Fig. 9b) corresponding to
+by DFT for a fixed substrate. The structure visualization for  2.86% of the slab. The Al dopant atoms were introduced
+periodic systems was carried out using VESTA [56]              into the 5th layer, resulting in a distance of more then
+                                                               10 A∞ from the gold atoms. Despite this large separation,
+                              Periodic Case                    we found that by doping the charge on the Au2 cluster
+                                                               is reduced (becomes more negative) by about 0.2 e
+                       Au2 Cluster on MgO(001)                 compared to the same geometry for the undoped surface.
+                                                               This change in the electronic structure does not only lead
+   As example for a periodic system we choose a                to a switching in the energetic order of the geometries
+diatomic gold cluster supported on the MgO(001)                but also to a change of the bond-length between the gold
+surface. Similar systems have attracted attention              atoms and the substrate.
+because of their catalytic properties for reactions like
+carbon monoxide oxidation, epoxidation of propylene,              The energy differences between the wetting and the
+water-gas-shift reactions, and the hydrogenation of            non-wetting configurations are compiled in Table. II for
+unsaturated hydrocarbons [57]. Theoretical [58, 59] as         the case of optimized gold positions with fixed substrate
+well as experimental studies [60, 61] have shown that          using DFT, the 2G- and the 4G-HDNNP. For the
+the geometry of these clusters can be modified by the          2G-HDNNP the energy differences for the doped and
+introduction of dopant atoms into the oxide substrate.         undoped systems are exactly the same as the dopant
+This ability to control the cluster morphology is of great     atoms are outside the local chemical environments of
+interest, as it can enhance the catalytic activity of the      the gold atoms. Thus the 2G-HDNNP cannot take
+system [59]. 2G-HDNNPs have been used before to study          the change of the PES by doping into account. The
+the properties of supported metal clusters [62≠64], but        DFT and 4G-HDNNP results agree in that there is a
+systems as complex as doped substrates to date have            slight preference for the wetting configuration for the
+remained inaccessible, since long-range charge transfer        doped surface, while in the undoped case the non-wetting
+between the dopant and the gold atoms is crucial to            configuration is clearly more stable.
+achieve a physically correct description of these systems.
+                                                                  An analysis of the PES for the case of the non-wetting
+   For Au2 at MgO(001) there are two main adsorption           geometry for the doped and undoped slabs is given in
+geometries, an upright "non-wetting" orientation of the        Fig. 11, which shows the energies relative to the minimum
+dimer attached to a surface oxygen and parallel to the         DFT energies of the respective systems as a function
+surface in a "wetting" configuration, in which the two         of the distance between the bottom Au atom and its
+Au atoms reside on two Mg atoms. DFT optimizations             neighboring oxygen atom for DFT, the 2G-HDNNP and
+of the positions of the gold atoms with fixed substrate for    the 4G-HDNNP. The energy curves of the 4G-HDNNP
+the doped and undoped surfaces reveal that the presence        and DFT are very similar and can resolve the different
+                                                               equilibrium bond lengths for the doped (4G-HDNNP:
+                                                               2.342 ∞A; DFT: 2.332 ∞A) and undoped (4G-HDNNP:
+                                                               2.177 ∞A; DFT: 2.190 A∞) substrates. The 2G-HDNNP
+                                                               yields the same adsorption geometry with a bond length
+                                                               of 2.256∞A in both cases, while the energies substantially
+                                                               differ from the DFT values with the main effect of
+                                                               the dopant being a constant energy shift between both
+                                                               substrates, similar to what we have observed in the
+                                                               presence or absence of the additional sodium atom in
+                                                               the NaCl cluster.
+
+                                                                                         IV. SUMMARY
+
+                                                                  In this work, we developed a fourth-generation
+                                                               high-dimensional neural network potential with accurate
+                                                               long-range electrostatic interactions, which is able to take
+                                                               long-range charge transfer as well as multiple charge
+                                                               states of a system into account. The new method is thus
+                                                               applicable to chemical problems, which are incorrectly
+                                                                         10
+
+TABLE II. Total energy difference (Ewetting - Enon-wetting)              described by current machine learning potentials relying
+in meV between the two geometries of the Au2 cluster on                  on a local description of the atomic environments only.
+the MgO(001) as obtained from optimizsations of the Au
+positions using DFT, the 2G- and the 4G-HDNNP. In case of                   The 4G-HDNNP combines the advantages of the
+the 2G-HDNNP both optimizations yield the same structure.                CENT approach and conventional high-dimensional
+                                                                         neural network potentials of second and third generation
+Doped                            DFT    2G-HDNNP              4G-HDNNP   by being generally applicable to all types of systems
+Undoped                           -2.7      375.0                 -41.0  and providing a very high accuracy. Employing
+                                 928.9      375.0                 975.4  environment-dependent atomic electronegativities, which
+                                                                         are expressed by atomic neural networks, a charge
+                                                   DFT (Doped)           equilibration method is used to determine the global
+                                                   DFT (Undoped)         charge distribution in the system. The resulting charges
+Relative energy (eV)        0.4                    2G-HDNNP (Doped)      are then used to compute the long-range electrostatic
+                                                   2G-HDNNP (Undoped)    energy as well as to include information about the global
+                                                   4G-HDNNP (Doped)      electronic structure into the short-range atomic energy
+                                                   4G-HDNNP (Undoped)    contributions represented by a second set of atomic
+                            0.2                                          neural networks.
+
+                            0.0                                             The superiority of the 4G-HDNNP potential energy
+                                                                         surface with respect to established 2G- and 3G-HDNNPs
+                            0.2                                          has been demonstrated for a series of systems, where
+                                     2.1 2.2 2.3 2.4 2.5                 conventional methods give qualitatively wrong results.
+                                          Au-O Bond length (≈)           In addition to the qualitatively correct description, we
+                                                                         also obtained a clearly improved quantitative agreement
+FIG. 10. Relative energy for the Au2 cluster adsorbed at                 of energies, forces and atomic charges with the underlying
+the MgO(001) substrate for the non-wetting geometry for the              DFT data, and we could demonstrate that local
+Al-doped and undoped cases. The local minima of the energy               minimum structures that are missed by the previous
+curves are marked with a dot. The Au-O bond length refers                generations of HDNNPs are correctly identified by the
+to the distance between the Au closest to the surface and its            new method.
+neighboring oxygen atom.
+                                                                            The results obtained in this work are general and
+Force on Au cluster (eV/≈)  1.0                                          equally valid for other types of machine learning
+                                                                         potentials relying on environment-dependent atomic
+                            0.5                                          energies only. Thus, the 4G-HDNNP is a vital step
+                                                                         for the further development of next-generation ML
+                            0.0                                          potentials providing a correct description of the PES
+                                                                         based a global charge distribution.
+                            0.5
+                                                                                          V. ACKNOWLEDGEMENT
+                            1.0                    DFT (Doped)
+                                                   DFT (Undoped)            We are grateful for the financial support from the
+                            1.5                    2G-HDNNP (Doped)      Deutsche Forschungsgemeinschaft (DFG) (BE3264/13-1,
+                                                   2G-HDNNP (Undoped)    project number 411538199) and the Swiss National
+                            2.0                    4G-HDNNP (Doped)      Science Foundation (SNF) (project number 182877).
+                                                                         Calculations were performed in Go®ttingen (DFG
+                            2.5                    4G-HDNNP (Undoped)    INST186/1294-1 FUGG, project number 405832858),
+                                                                         at sciCORE (http://scicore.unibas.ch/) scientific
+                                 2.1 2.2 2.3 2.4 2.5                     computing center at University of Basel and the
+                                        Au-O Bond length (≈)             Swiss National Supercomputer (CSCS) under project
+                                                                         s963D/C03N05.
+FIG. 11. Sum of forces acting on the Au2 cluster adsorbed at
+the MgO(001) substrate for the non-wetting geometry for the                                        Simulation Details
+Al-doped and undoped cases. The Au-O bond length refers
+to the distance between the Au closest to the surface and its                                   Neural Network Potentials
+neighboring oxygen atom.
+                                                                            The HDNNPs reported in this work have been
+                                                                         constructed using the program RuNNer [65≠67], which is
+                                                              11
+
+freely available under the GPL3 license. Atom-centered        with a 3 ◊ 3 ◊ 1 k-point grid. Spin polarized calculations
+symmetry functions [45] have been used for the                have been carried out for the Au2-MgO, NaCl and
+description of the atomic environments within a spatial       Ag3 systems. Reference atomic charges were calculated
+cutoff radius set to 8-10 Bohr depending on the system.       using Hirshfeld population analysis [44]. In principle
+For a given system, the same parameters of the                any other charge partitioning scheme could be used in
+symmetry functions and the same atomic neural network         the same way. The DFT-based geometry optimizations
+architectures have been used for the different generations    were carried out by Broyden-Fletcher-Goldfarb-Shanno
+of HDNNPs being compared, and the parameters and              algorithm. [71≠73]
+cutoff radii for all systems can be found in the electronic
+supporting information. The functional forms of the              The dataset of the C10H2/C10H+3 molecules and
+symmetry functions are given in Ref. 45. In all examples,     the Ag3 clusters have been constructed by performing
+the atomic neural networks consists of an input layer with    Born-Oppenheimer molecular dynamics [74] simulations
+the number of symmetry functions ranging from 12 to 54        for each system at 300 K with 5000 steps at a time step of
+depending on the specific element and system, two hidden      0.5 fs. A Nos¥e-Hoover thermostat [75, 76] was applied to
+layers with 15 neurons each, and an output layer with one     run simulations in the canonical (N V T ) ensemble, and
+neuron providing either the atomic short range energy or      the effective mass was set to 1700 cm-1. In addition,
+electronegativity. Forces have been obtained as analytic      the trajectory path during the geometry relaxations
+energy derivative. The activation functions in the hidden     up to a numerical convergence of 0.001 eV/∞A of the
+layers and the output layer were the hyperbolic tangent       forces was also added to the data set to have sufficient
+and the linear function, respectively.                        sampling close to equilibrium structures. The geometry
+                                                              optimization of the Ag-3 system has been terminated
+   In all cases 90% of the available reference data was       when reaching forces below 0.0015 eV/∞A.
+used for training the HDNNPs while the remaining 10%
+of the data points were used as an independent test set          In case of the NaCl cluster and the Au2 cluster at
+to confirm the reliability of PESs and detect possible        the MgO surface the reference data set consists of two
+over-fitting. Energies and forces were used for training      structurally different types of systems, and half of the
+the short-range atomic neural networks.                       data set was dedicated to each of the two cases. We
+                                                              performed a random sampling along the trajectories
+   Moreover, a screening of the short-range Coulomb           depicted in figures 7 and 11 and added further Gaussian
+electrostatic interaction was applied in order to facilitate  distributed displacements to ensure sufficient sampling of
+the fitting of the short-range energies and forces obtained   the PES in the vicinity of the structures of interest. For
+from Eq. 9 [24]. The inner and outer cutoff radius for        the NaCl cluster we used Gaussian displacements with a
+screening of the electrostatic interaction have been set      standard deviation of 0.05 ∞A. As in the Au2-MgO system
+to 1.69-2.54 ∞A and the cutoff of the symmetry functions      we only investigated the change in geometry of the Au2
+respectively. The widths of the Gaussian charge densities     cluster, while the MgO substrate remained fixed during
+in Eq. 4 have been set to the covalent radii of the           all geometry relaxations, we used a smaller magnitude
+elements. All the details of the training process and the     of the Gaussian displacements for the substrate than
+validation strategies for HDNNPs in general can be found      for the cluster. A standard deviation of 0.02 A∞ was
+in recent reviews [66, 67].                                   used for the substrate and 0.1 ∞A was used for the gold
+                                                              cluster. Half of the data set consists of structures with
+   The HDNNP-based geometry optimizations were                an undoped substrate, while the other half includes a
+performed using simple gradient descent algorithms [68]       doped substrate. Half of the samples of each substrate
+and the numerical threshold of the forces was set to 10-4     configuration were generated with the Au2 cluster in its
+Ha/Bohr  0.005 eV/∞A, which is the same convergence           wetting configuration, and the other half with the cluster
+used in the DFT calculations used for validating the          in its non-wetting configuration. The total number of
+HDNNP results.                                                reference data points for the NaCl cluster and Au2-MgO
+                                                              slab is 5000, while the the Ag3 clusters and the organic
+                             DFT Calculations                 molecule it is 10019 and 11013, respectively.
+
+   The DFT reference data has been generated using                              VI. DATA AVAILABILITY
+the all-electron code FHI-aims [69] (version 171221 1)
+employing the Perdew-Burke-Ernzerhof [70] (PBE)                  All data that support the findings of this study are
+exchange-correlation functional with light setting . The      available in the Supplementary information file or from
+total energy, sum of eigenvalues and charge density           the corresponding author upon reasonable request.
+for all systems except Au2-MgO were converged to
+10-5 eV, 10-2 eV and 10-4 e, respectively. For the
+Au2-MgO systems stricter settings have been applied by
+multiplying each criterion by a factor 0.1 in combination
+                                                               12
+
+            VII. AUTHOR CONTRIBUTIONS                          [20] C. M. Handley and P. L. A. Popelier, J. Phys. Chem. A
+                                                                     114, 3371 (2010).
+   Both research groups contributed equally to this
+project. J.B. and S.G. conceived the 4G-HDNNP                  [21] E. Prodan and W. Kohn, Proc. Natl. Acad. Sci. 102,
+approach and initiated the research project. T.W.K.                  11635 (2005).
+and J.A.F. worked out the practical algorithms for the
+approach and implemented it in the RuNNer software             [22] Z. Deng, C. Chen, X.-G. Li, and S. P. Ong, npj Comput.
+written by J.B. All calculations were performed by                   Mater. 5, 75 (2019).
+T.W.K. and J.A.F. All authors contributed ideas to
+the project and jointly analyzed the results. T.W.K.           [23] N. Artrith, T. Morawietz, and J. Behler, Phys. Rev. B
+and J.A.F. wrote the initial version of the manuscript               83, 153101 (2011).
+and prepared the figures, all authors jointly edited the
+manuscript. T.W.K. and J.A.F. contributed equally to           [24] T. Morawietz, V. Sharma, and J. Behler, J. Chem. Phys.
+this paper.                                                          136, 064103 (2012).
+
+Competing interests: The authors declare no                    [25] P. P. Ewald, Ann. Phys 369, 253 (1921).
+competing interests.                                           [26] K. Yao, J. E. Herr, D. W. Toth, R. Mckintyre, and
+
+    Corresponding author: tko@chemie.uni-goettingen.de               J. Parkhill, Chem. Sci. 9, 2261 (2018).
+    Corresponding author: jonas.finkler@unibas.ch              [27] T. Bereau, D. Andrienko, and O. A. von Lilienfeld, J.
+
+      stefan.goedecker@unibas.ch                                     Chem. Theory Comput. 11, 3225 (2015).
+      joerg.behler@uni-goettingen.de                           [28] A. Stukowski, Modell. Simul. Mater. Sci. Eng. 18, 015012
+
+ [1] J. A. McCammon, B. R. Gelin, and M. Karplus, Nature             (2010).
+      267, 585 (1977).                                         [29] T. Hoshino, N. Papanikolaou, R. Zeller, P. H. Dederichs,
+
+ [2] W. L. Jorgensen and C. Ravimohan, J. Chem. Phys. 83,            M. Asato, T. Asada, and N. Stefanou, Comp. Mat. Sci.
+      3050 (1985).                                                   14, 56 (1999).
+                                                               [30] B. Parsaeifard, J. A. Finkler, and S. Goedecker,
+ [3] J. Behler, J. Chem. Phys. 145, 170901 (2016).                   arXiv:2008.11277 (2020).
+ [4] V. Botu, R. Batra, J. Chapman, and R. Ramprasad, J.       [31] A. K. Rappe and W. A. Goddard, III, J. Phys. Chem.
+                                                                     95, 3358 (1991).
+      Phys. Chem. C 121, 511 (2017).                           [32] A. C. Van Duin, S. Dasgupta, F. Lorant, and W. A.
+ [5] V. L. Deringer, M. A. Caro, and G. Csa¥nyi, Adv. Mater.         Goddard, J. Phys. Chem. A 105, 9396 (2001).
+                                                               [33] B. Devine, T.-R. Shan, Y.-T. Cheng, A. J. McGaughey,
+      31, 1902765 (2019).                                            M. Lee, S. R. Phillpot, S. B. Sinnott, et al., Phys. Rev.
+ [6] F. Brockherde, L. Vogt, L. Li, M. E. Tuckerman,                 B 84, 125308 (2011).
+                                                               [34] X. W. Zhou and H. N. Wadley, J. Phys.: Condens. Matter
+      K. Burke, and K.-R. Mu®ller, Nature Comm. 8, 872               17, 3619 (2005).
+      (2017).                                                  [35] J. Gasteiger and M. Marsili, Tetrahedron 36, 3219
+ [7] F. No¥e, A. Tkatchenko, K.-R. Mu®ller, and C. Clementi,         (1980).
+      Annu. Rev. Phys. Chem. 71, 361 (2020).                   [36] S. A. Ghasemi, A. Hofstetter, S. Saha, and S. Goedecker,
+ [8] T. B. Blank, S. D. Brown, A. W. Calhoun, and D. J.              Phys. Rev. B 92, 045131 (2015).
+      Doren, J. Chem. Phys. 103, 4129 (1995).                  [37] S. Faraji, S. A. Ghasemi, S. Rostami, R. Rasoulkhani,
+ [9] J. Behler and M. Parrinello, Phys. Rev. Lett. 98, 146401        B. Schaefer, S. Goedecker, and M. Amsler, Phys. Rev.
+      (2007).                                                        B 95, 104105 (2017).
+[10] K. T. Schu®tt, H. E. Sauceda, P.-J. Kindermans,           [38] M. Amsler, S. Rostami, H. Tahmasbi, E. Rahmatizad,
+      A. Tkatchenko, and K.-R. Mu®ller, J. Chem. Phys. 148,          S. Faraji, R. Rasoulkhani, and S. A. Ghasemi, Comput.
+      241722 (2018).                                                 Phys. Commun , 107415 (2020).
+[11] O. T. Unke and M. Meuwly, J. Chem. Theory Comput.         [39] R. Hafizi, S. A. Ghasemi, S. J. Hashemifar, and
+      15, 3678 (2019).                                               H. Akbarzadeh, J. Chem. Phys. 147, 234306 (2017).
+[12] J. S. Smith, O. Isayev, and A. E. Roitberg, Chem. Sci.    [40] S. Faraji, S. A. Ghasemi, B. Parsaeifard, and
+      8, 3192 (2017).                                                S. Goedecker, Phys. Chem. Chem. Phys. 21, 16270
+[13] A. P. Barto¥k, M. C. Payne, R. Kondor, and G. Csa¥nyi,          (2019).
+      Phys. Rev. Lett. 104, 136403 (2010).                     [41] R. Rasoulkhani, H. Tahmasbi, S. A. Ghasemi, S. Faraji,
+[14] A. V. Shapeev, Multiscale Model. Simul. 14, 1153 (2016).        S. Rostami, and M. Amsler, Phys. Rev. B 96, 064108
+[15] A. P. Thompson, L. P. Swiler, C. R. Trott, S. M. Foiles,        (2017).
+      and G. J. Tucker, J. Comput. Phys. 285, 316 (2015).      [42] X. Xie, K. A. Persson, and D. W. Small, J. Chem.
+[16] R. Drautz, Phys. Rev. B 99, 014104 (2019).                      Theory Comput. 16, 4256 (2020).
+[17] R. M. Balabin and E. I. Lomakina, Phys. Chem. Chem.       [43] B. Kaduk, T. Kowalczyk, and T. V. Voorhis, Chem. Rev.
+      Phys. 13, 11710 (2011).                                        112, 321 (2011).
+[18] J. Behler, Chem. Rev. submitted (2020).                   [44] F. L. Hirshfeld, Theor. Chim. Acta 44, 129 (1977).
+[19] J. Behler, Phys. Chem. Chem. Phys. 13, 17930 (2011).      [45] J. Behler, J. Chem. Phys. 134, 074106 (2011).
+                                                               [46] A. K. Rappe and W. A. Goddard III, J. Phys. Chem. 95,
+                                                                     3358 (1991).
+                                                               [47] A. E. Sifain, N. Lubbers, B. T. Nebgen, J. S. Smith,
+                                                                     A. Y. Lokhov, O. Isayev, A. E. Roitberg, K. Barros, and
+                                                                     S. Tretiak, J. Phys. Chem. Lett. 9, 4495 (2018).
+                                                               [48] Q. Fan and G. V. Pfeiffer, Chem. Phys. Lett. 162, 472
+                                                                     (1989).
+                                                               [49] L. Horny`, N. D. Petraco, and H. F. Schaefer, J. Am.
+                                                                     Chem. Soc. 124, 14716 (2002).
+                                                                13
+
+[50] L. Pan, B. Rao, A. Gupta, G. Das, and P. Ayyub, J.         [63] J. S. Elias, N. Artrith, M. Bugnet, L. Giordano, G. A.
+      Chem. Phys. 119, 7705 (2003).                                   Botton, A. M. Kolpak, and Y. Shao-Horn, ACS Catalysis
+                                                                      6, 1675 (2016).
+[51] M. L. McKee and A. Samokhvalov, J. Phys. Chem. A
+      121, 5018 (2017).                                         [64] M. L. Paleico and J. Behler, J. Chem. Phys. 153, 054704
+                                                                      (2020).
+[52] K. Duanmu, O. Roberto-Neto, F. B. Machado, J. A.
+      Hansen, J. Shen, P. Piecuch, and D. G. Truhlar, J. Phys.  [65] J. Behler, "RuNNer ≠ a program for constructing
+      Chem. C 120, 13275 (2016).                                      high-dimensional neural network potentials, Universita®t
+                                                                      Go®ttingen 2020.".
+[53] N. Goel, S. Gautam, and K. Dharamvir, Int. J. Quantum
+      Chem. 112, 575 (2012).                                    [66] J. Behler, Int. J. Quantum Chem. 115, 1032 (2015).
+                                                                [67] J. Behler, Angew. Chem. Int. Ed. 56, 12828 (2017).
+[54] R. Fournier, J. Chem. Theory Comput. 3, 921 (2007).        [68] S. Ruder, arXiv:1609.04747 (2016).
+[55] S. De, S. A. Ghasemi, A. Willand, L. Genovese,             [69] V. Blum, R. Gehrke, F. Hanke, P. Havu, V. Havu,
+
+      D. Kanhere, and S. Goedecker, J. Chem. Phys. 134,               X. Ren, K. Reuter, and M. Scheffler, Comput. Phys.
+      124302 (2011).                                                  Commun. 180, 2175 (2009).
+[56] K. Momma and F. Izumi, J. Appl. Crystallogr. 44, 1272      [70] J. P. Perdew, K. Burke, and M. Ernzerhof, Phys. Rev.
+      (2011).                                                         Lett. 77, 3865 (1996).
+[57] M. Haruta and M. Dat¥e, Appl. Catal., A 222, 427 (2001).   [71] D. Goldfarb, Math. Comput. 24, 23 (1970).
+[58] N. Mammen, S. Narasimhan, and S. de Gironcoli, J. Am.      [72] D. F. Shanno, Math. Comput. 24, 647 (1970).
+      Chem. Soc. 133, 2801 (2011).                              [73] C. G. Broyden, IMA J. Appl. Math 6, 222 (1970).
+[59] N. Mammen and S. Narasimhan, J. Chem. Phys. 149,           [74] R. N. Barnett and U. Landman, Phys. Rev. B 48, 2081
+      174701 (2018).                                                  (1993).
+[60] X. Shao, S. Prada, L. Giordano, G. Pacchioni, N. Nilius,   [75] D. J. Evans and B. L. Holian, J. Chem. Phys. 83, 4069
+      and H.-J. Freund, Angew. Chem. Int. Ed. 50, 11525               (1985).
+      (2011).                                                   [76] S. Nos¥e, J. Chem. Phys. 81, 511 (1984).
+[61] F. Stavale, X. Shao, N. Nilius, H.-J. Freund, S. Prada,
+      L. Giordano, and G. Pacchioni, J. Am. Chem. Soc. 134,
+      11380 (2012).
+[62] N. Artrith, B. Hiller, and J. Behler, Phys. Status Solidi
+      B 250, 1191 (2013).
+

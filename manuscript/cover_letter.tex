@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{xcolor}
+\input{authors}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55\baselineskip}
+\urlstyle{same}
+
+\begin{document}
+
+% ------------------------------------------------------------------ letterhead
+{\large\bfseries \AuthorName}\\[2pt]
+Department of Materials Science and Engineering\\
+Indian Institute of Technology Kanpur, Kanpur 208016, Uttar Pradesh, India\\
+\AuthorEmail\ \ $\cdot$\ \ ORCID \AuthorORCID
+
+\vspace{-4pt}
+{\color{black!60}\rule{\textwidth}{0.4pt}}
+
+\begin{minipage}[t]{0.6\textwidth}
+Editor-in-Chief\\
+\emph{Journal of Chemical Theory and Computation}\\
+American Chemical Society
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}\raggedleft
+\today
+\end{minipage}
+
+\textbf{Re: Submission of the manuscript ``Factorised Cartesian Atomic Cluster Expansion for Low-Cost
+Machine-Learning Interatomic Potentials''}
+
+Dear Editor,
+
+Please consider the enclosed manuscript for publication as an Article in the \emph{Journal of Chemical Theory and
+Computation}.
+
+Machine-learned interatomic potentials of the atomic cluster expansion (ACE) family, such as MACE, reach near-DFT
+accuracy, but their cost per evaluation still limits molecular-dynamics length and system size. The manuscript makes
+four contributions within the ACE framework. It does not claim a new theoretical foundation.
+\begin{enumerate}[leftmargin=1.6em, itemsep=2pt, topsep=0pt, parsep=0pt]
+\item \textbf{Factorised edge density.} A factorised Cartesian form of the ACE edge density whose per-edge cost
+does not depend on the feature width. Tensor transport is a single constant linear map, and the body-ordered algebra
+runs in fused GPU kernels. At equal training budget the model is more accurate than MACE-small on four of five rMD17
+molecules and tied on the fifth, and it is 5.7 times faster at inference than MACE-small and 10.9 times faster than
+MACE-medium.
+\item \textbf{Physics operators.} One interface through which latent-charge electrostatics (Ewald and smooth
+particle-mesh Ewald), dispersion and short-range repulsion are attached, adding about 23\% to the cost of a 4,500-atom system. It is validated against
+analytical and Ewald references and on the charged-system benchmarks of Ko et al.
+\item \textbf{Training stability.} A diagnosis and fix for the training divergences of this model class (unit
+weight parameterisation), supported by a controlled probe.
+\item \textbf{Distillation.} Uncertainty-gated, iterated ensemble distillation. On rMD17 aspirin it brings a single
+model to energy and force errors of 2.26~meV and 6.74~meV/\AA, within 3\% and 2\% of the published MACE result, at
+lower inference cost than a 64-channel MACE.
+\end{enumerate}
+
+We report the limitations openly. Training steps are no cheaper than for MACE-small, and distillation multiplies
+training compute. Several recent equivariant models remain more accurate on aspirin. All MACE comparisons use the
+reference implementation without the cuEquivariance kernels.
+
+The work suits JCTC's readership in method development for molecular simulation. All code, tests, training logs,
+checkpoints and the scripts that regenerate every table and figure are publicly available under the MIT licence at
+\url{https://github.com/albert-hzbn/face-mlip}. An AI assistant was used during the work, as disclosed in the
+manuscript.
+
+This manuscript is not under consideration elsewhere and has not been published previously. The author declares no
+competing financial interest.
+
+Sincerely,
+
+\vspace{1.2cm}
+\AuthorName\\
+Department of Materials Science and Engineering\\
+Indian Institute of Technology Kanpur
+
+\end{document}

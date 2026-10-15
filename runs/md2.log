@@ -1,0 +1,21 @@
+step 20: kept 947/950, mean spread 7.2 meV/A, T 534 K
+step 40: kept 944/950, mean spread 7.1 meV/A, T 533 K
+step 60: kept 946/950, mean spread 7.0 meV/A, T 525 K
+step 80: kept 944/950, mean spread 7.1 meV/A, T 523 K
+step 100: kept 947/950, mean spread 7.0 meV/A, T 521 K
+step 120: kept 946/950, mean spread 7.1 meV/A, T 516 K
+step 140: kept 945/950, mean spread 7.1 meV/A, T 515 K
+step 160: kept 945/950, mean spread 7.1 meV/A, T 514 K
+step 180: kept 942/950, mean spread 7.1 meV/A, T 514 K
+step 200: kept 947/950, mean spread 7.1 meV/A, T 515 K
+step 220: kept 944/950, mean spread 7.2 meV/A, T 511 K
+step 240: kept 940/950, mean spread 7.1 meV/A, T 509 K
+step 260: kept 944/950, mean spread 7.1 meV/A, T 507 K
+step 280: kept 947/950, mean spread 7.1 meV/A, T 508 K
+step 300: kept 944/950, mean spread 7.2 meV/A, T 503 K
+step 320: kept 943/950, mean spread 7.0 meV/A, T 506 K
+step 340: kept 945/950, mean spread 7.0 meV/A, T 506 K
+step 360: kept 946/950, mean spread 7.0 meV/A, T 504 K
+step 380: kept 947/950, mean spread 7.0 meV/A, T 508 K
+step 400: kept 946/950, mean spread 7.0 meV/A, T 508 K
+saved data/distill_md2_aspirin.npz: 18899 snapshots, 101 rejected by the uncertainty gate

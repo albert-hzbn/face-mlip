@@ -1,0 +1,87 @@
+{
+ "args": {
+  "data": "data/ko2021/datasets/Ag_cluster/input.data",
+  "n_train": 2000,
+  "n_val": 200,
+  "n_test": 1000,
+  "C": 64,
+  "rc": 5.0,
+  "passes": 2,
+  "epochs": 60,
+  "bs": 16,
+  "lr": 0.005,
+  "wF": 100.0,
+  "terms": "",
+  "transport": 1,
+  "eqmsg": 1,
+  "factor": 1,
+  "B": 16,
+  "K": 32,
+  "seed": 0,
+  "tag": "ko2_none"
+ },
+ "test": {
+  "E_MAE_meV_atom": NaN,
+  "E_RMSE_meV_atom": NaN,
+  "F_MAE_meV_A": NaN,
+  "F_RMSE_meV_A": NaN
+ },
+ "log": [
+  {
+   "E_MAE_meV_atom": 1247.6730355620384,
+   "E_RMSE_meV_atom": 1249.9460856364663,
+   "F_MAE_meV_A": 98.8461995541325,
+   "F_RMSE_meV_A": 178.0969682494543,
+   "epoch": 0,
+   "time": 19.816957712173462
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 10,
+   "time": 126.91286206245422
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 20,
+   "time": 206.49537825584412
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 30,
+   "time": 290.11937189102173
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 40,
+   "time": 373.69670009613037
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 50,
+   "time": 457.28560996055603
+  },
+  {
+   "E_MAE_meV_atom": NaN,
+   "E_RMSE_meV_atom": NaN,
+   "F_MAE_meV_A": NaN,
+   "F_RMSE_meV_A": NaN,
+   "epoch": 59,
+   "time": 532.2931005954742
+  }
+ ]
+}
