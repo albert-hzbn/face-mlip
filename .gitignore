@@ -19,3 +19,4 @@ manuscript/*.fdb_latexmk
 manuscript/*.out
 manuscript/acs-*.bib
 manuscript/*Notes.bib
+manuscript/*.synctex.gz
