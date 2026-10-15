@@ -313,8 +313,9 @@ if all(os.path.exists(p) for _, p in lc):
         ax.set_xticklabels(["50", "100", "250", "500", "950"]); ax.minorticks_off()
         ax.set_xlabel("training structures"); ax.set_ylabel(lab)
     a.set_title("(a) forces", fontsize=11, loc="left", color=INK); b.set_title("(b) energies", fontsize=11, loc="left", color=INK)
-    a.legend(loc="lower left", fontsize=9.5)
-    fig.tight_layout(w_pad=1.5)
+    h, l = a.get_legend_handles_labels()       # one shared legend below both panels, clear of all data
+    fig.legend(h, l, loc="lower center", ncol=2, fontsize=9.5, bbox_to_anchor=(0.5, 0.0))
+    fig.tight_layout(w_pad=1.5, rect=(0, 0.17, 1, 1))
     fig.savefig(f"{OUT}/fig_learning_curve.pdf")
     plt.close(fig)
     print("learning-curve figure written")

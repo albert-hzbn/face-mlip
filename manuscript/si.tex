@@ -269,6 +269,23 @@ atoms & \FACE{} flagship & \FACE-CP $C=96$ & MACE, 64 ch. & MACE, 128 ch. \\
 \end{tabular}
 \end{table}
 
+\begin{table}[h]
+\caption{Learning curve of the \FACE{} flagship on rMD17 aspirin: nested training subsets, the same 50 validation and
+1000 test structures; energy (meV) and force (meV/\AA) MAE.}
+\label{tab:learningcurve}
+\begin{tabular}{rrccl}
+\toprule
+$N$ & epochs & $E$ & $F$ & note \\
+\midrule
+50 & 2000 & 24.60 & 50.30 &  \\
+100 & 1000 & 10.74 & 32.20 &  \\
+250 & 400 & 7.13 & 19.74 &  \\
+500 & 400 & 4.18 & 12.77 & stopped at epoch 380 \\
+950 & 400 & 3.13 & 9.08 &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \clearpage
 \section*{S6. Hyperparameters}
 Two message-passing steps; eight Bessel functions with polynomial envelope ($p=6$); radial MLP width 64 with

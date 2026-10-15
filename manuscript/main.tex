@@ -804,6 +804,8 @@ The main findings, detailed in the subsections below, are:
 \item at equal training budgets, \FACE{} is as accurate as MACE or more accurate, at 5.7 times (MACE-small) to 10.9
 times (MACE-medium) lower inference cost and with about four times less GPU memory;
 \item widening \FACE{} barely increases its cost, as predicted by the cost model, whereas widening MACE does;
+\item with little training data, \FACE{} is competitive with NequIP and ACE, but its learning curve is slightly
+less steep than that of MACE;
 \item unit parameterisation removes the training divergences that affected earlier versions;
 \item uncertainty-gated distillation brings a single model to within 2--3\% of the published MACE accuracy on aspirin;
 \item ensemble spreads are useful error indicators, and the models run stably in molecular dynamics and reproduce the
@@ -940,6 +942,36 @@ of the best single model (generation-4 \FACE-CP; logarithmic point density). (b)
 absolute force-component errors by element. (c) Per-structure force error of the five-model flagship ensemble
 versus its force spread (Spearman 0.84); the dashed line marks equality.}
 \label{fig:errors}
+\end{figure}
+
+\subsubsection{Data efficiency}
+\label{sec:dataeff}
+\emph{\FACE{} learns about as efficiently as NequIP, and less efficiently than MACE.} To test how the accuracy depends
+on the amount of training data, the flagship was trained on nested subsets of $N=50$, 100, 250 and 500 of the 950
+training structures, with the same validation and test sets, for 400 epochs or at least 20,000 optimiser steps,
+whichever is more. The $N=500$ run was stopped by the memory guard of the training computer at epoch 380 of 400,
+after the validation force error had stopped changing (11.63--11.64~meV/\AA{} over the last 50 epochs), and was
+evaluated at that point. Figure~\ref{fig:learningcurve} compares the test errors with published values for MACE,
+NequIP and ACE at 50 and 1000 training structures\cite{batatia2022mace}.
+
+The force error decreases from 50.3~meV/\AA{} at $N=50$ to 9.08~meV/\AA{} at $N=950$, following a power law with
+exponent 0.58 (energy: 0.67). With 50 structures, \FACE{} (24.6~meV, 50.3~meV/\AA) has a lower force error than
+NequIP (19.5, 52.0) and ACE (26.2, 63.8) but a higher one than MACE (17.0, 43.9); its energy error lies between those
+of NequIP and ACE. Between the two published points, the force errors of MACE and NequIP fall with slightly steeper
+exponents (0.64 and 0.63) than that of \FACE{}, and that of linear ACE with a flatter one (0.43). The remaining gap to
+MACE at large $N$ is therefore one of data efficiency rather than capacity, in agreement with the FACE-L result of
+Section~\ref{sec:ablation}; it is this gap that the distillation of Section~\ref{sec:distillresults} reduces. The
+published values come from longer training in double precision and are not strictly comparable; the values of
+\FACE{} are listed in Table~S13.
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figures/fig_learning_curve.pdf}
+\caption{Test errors of the \FACE{} flagship on rMD17 aspirin versus the number of training structures (nested
+subsets of the training set, the same 1000 test structures), compared with published values for MACE, NequIP and ACE
+at 50 and 1000 training structures (plotted at 950)\cite{batatia2022mace}. Dashed lines connect the two published
+points of each model. (a) Force MAE; (b) energy MAE.}
+\label{fig:learningcurve}
 \end{figure}
 
 \subsubsection{Uncertainty-gated distillation}
@@ -1289,7 +1321,9 @@ software openly available.
 The Supporting Information is available free of charge on the ACS Publications website: architecture
 development history and ablations; training-stability probe; kernel engineering; ensembles and seed variance;
 additional distillation results; energy and force RMSE values; inference cost versus system size; training-step
-cost; published reference values; hyperparameters; entries of the transport map; learning curves (PDF).
+cost; published reference values; cost of the physics operators, inference time versus width and GPU memory
+versus system size; learning-curve values; hyperparameters; entries of the transport map; validation curves
+(PDF).
 \end{suppinfo}
 
 \section*{Author Information}
