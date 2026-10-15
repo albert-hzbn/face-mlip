@@ -958,8 +958,9 @@ The force error decreases from 50.3~meV/\AA{} at $N=50$ to 9.08~meV/\AA{} at $N=
 exponent 0.58 (energy: 0.67). With 50 structures, \FACE{} (24.6~meV, 50.3~meV/\AA) has a lower force error than
 NequIP (19.5, 52.0) and ACE (26.2, 63.8) but a higher one than MACE (17.0, 43.9); its energy error lies between those
 of NequIP and ACE. Between the two published points, the force errors of MACE and NequIP fall with slightly steeper
-exponents (0.64 and 0.63) than that of \FACE{}, and that of linear ACE with a flatter one (0.43). The remaining gap to
-MACE at large $N$ is therefore one of data efficiency rather than capacity, in agreement with the FACE-L result of
+exponents (0.64 and 0.63) than that of \FACE{}, and that of linear ACE with a flatter one (0.43); the force-error gap
+to MACE accordingly grows from 15\% at $N=50$ to 38\% at $N=950$. The remaining gap to MACE at large $N$ is therefore
+one of data efficiency rather than capacity, in agreement with the FACE-L result of
 Section~\ref{sec:ablation}; it is this gap that the distillation of Section~\ref{sec:distillresults} reduces. The
 published values come from longer training in double precision and are not strictly comparable; the values of
 \FACE{} are listed in Table~S13.
@@ -969,8 +970,8 @@ published values come from longer training in double precision and are not stric
 \includegraphics[width=\linewidth]{figures/fig_learning_curve.pdf}
 \caption{Test errors of the \FACE{} flagship on rMD17 aspirin versus the number of training structures (nested
 subsets of the training set, the same 1000 test structures), compared with published values for MACE, NequIP and ACE
-at 50 and 1000 training structures (plotted at 950)\cite{batatia2022mace}. Dashed lines connect the two published
-points of each model. (a) Force MAE; (b) energy MAE.}
+at 50 and 1000 training structures (plotted at 950)\cite{batatia2022mace}, shown as points because only these two
+values are published. (a) Force MAE; (b) energy MAE.}
 \label{fig:learningcurve}
 \end{figure}
 

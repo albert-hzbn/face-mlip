@@ -308,7 +308,7 @@ if all(os.path.exists(p) for _, p in lc):
     for ax, y, idx, lab in [(a, Ff, 2, "force MAE (meV/Å)"), (b, Ef, 1, "energy MAE (meV)")]:
         ax.plot(N, y, "o-", color=BLUE, ms=5.5, mec=INK, mew=0.5, label="FACE flagship (this work)")
         for (name, v), (col, mk) in zip(pub.items(), [(ORANGE, "s"), (AQUA, "^"), (YELLOW, "D")]):
-            ax.plot(v[0], v[idx], marker=mk, ls=(0, (4, 2)), color=col, ms=5, mec=INK, mew=0.5, label=f"{name} (published)")
+            ax.plot(v[0], v[idx], marker=mk, ls="none", color=col, ms=6.5, mec=INK, mew=0.5, label=f"{name} (published)")   # two published points only: no connecting line
         ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xticks([50, 100, 250, 500, 950])
         ax.set_xticklabels(["50", "100", "250", "500", "950"]); ax.minorticks_off()
         ax.set_xlabel("training structures"); ax.set_ylabel(lab)
