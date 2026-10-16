@@ -807,7 +807,7 @@ times (MACE-medium) lower inference cost and with about four times less GPU memo
 \item with little training data, \FACE{} is competitive with NequIP and ACE, but its learning curve is slightly
 less steep than that of MACE;
 \item unit parameterisation removes the training divergences that affected earlier versions;
-\item uncertainty-gated distillation lowers the force error of a single model by 23--24\% on aspirin, ethanol and
+\item uncertainty-gated distillation lowers the force error of a single model by 23--26\% on aspirin, ethanol and
 malonaldehyde, and brings it to within 2--3\% of the published MACE accuracy on aspirin;
 \item ensemble spreads are useful error indicators, and the models run stably in molecular dynamics and reproduce the
 thermal structure of the reference data;
@@ -998,9 +998,12 @@ To test whether the protocol transfers without tuning, it was applied unchanged 
 and a $C=160$ student. The gate rejected 79 of 19,000 teacher-MD snapshots. After the DFT-only fine-tune, the single
 student reaches 0.91~meV and 5.46~meV/\AA, 24\% lower in force error than its teachers and better than the teacher
 ensemble; its force error is lower than published BOTNet (5.8) but higher than published NequIP (5.1), MACE (4.1) and
-Allegro (3.6)\cite{batatia2022mace,musaelian2023}. Across the three molecules, distillation lowers the force error of a
-single \FACE-CP model by a similar amount: 23\% for aspirin (8.73 to 6.74~meV/\AA), 23\% for ethanol (4.84 to
-3.72~meV/\AA, Section~\ref{sec:ethanol}) and 24\% for malonaldehyde.
+Allegro (3.6)\cite{batatia2022mace,musaelian2023}. A second generation, whose four-model teacher includes this
+student (ensemble 0.92/5.65), lowers the errors further to 0.88~meV and 5.35~meV/\AA, again better than its own
+teacher, but by only 2\% in the forces; the gain per generation therefore diminishes quickly. Across the three
+molecules, distillation lowers the force error of a single \FACE-CP model by a similar amount: 23\% for aspirin (8.73
+to 6.74~meV/\AA), 23\% for ethanol (4.84 to 3.72~meV/\AA, Section~\ref{sec:ethanol}) and 26\% for malonaldehyde
+(7.22 to 5.35~meV/\AA).
 
 \begin{table}
 \caption{Aspirin, single models, 1000 test structures (meV, meV/\AA). Published values are from different protocols.}

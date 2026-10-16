@@ -503,3 +503,6 @@ Teacher MD 500 K, gate 13.1 meV/Å (3× test spread): 18,921 kept, 79 rejected; 
 forces. Distillation gains now confirmed on aspirin, ethanol and malonaldehyde.
 GPU safety: all launches in this pipeline were gated (no nvlddmkm fault in 20 min, no python start in 2 min); no
 driver faults were triggered by these launches after gating was introduced.
+
+### 4.33 Malonaldehyde generation 2 (born-again distillation)
+Teachers: mal_cp_s0/s1/s2 + gen-1 distilled ft (ensemble test 0.922 meV / 5.652 meV/Å). Relabelled the gen-1 MD snapshots (18921) with the 4-model ensemble; student C160 CP, 25 ep on DFT×4 + teacher labels → test 0.972 / 5.784; DFT-only fine-tune (60 ep, lr 0.004, swa_frac 0.5) → **test E 0.875 meV, F 5.353 meV/Å** (gen-1: 0.91 / 5.46; single model 1.153 / 7.144). Gen-2 beats its own teacher ensemble and gen-1 again by ~2% in F, i.e. diminishing returns per generation. Ethanol gen-3 follows.
