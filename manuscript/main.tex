@@ -807,7 +807,8 @@ times (MACE-medium) lower inference cost and with about four times less GPU memo
 \item with little training data, \FACE{} is competitive with NequIP and ACE, but its learning curve is slightly
 less steep than that of MACE;
 \item unit parameterisation removes the training divergences that affected earlier versions;
-\item uncertainty-gated distillation brings a single model to within 2--3\% of the published MACE accuracy on aspirin;
+\item uncertainty-gated distillation lowers the force error of a single model by 23--24\% on aspirin, ethanol and
+malonaldehyde, and brings it to within 2--3\% of the published MACE accuracy on aspirin;
 \item ensemble spreads are useful error indicators, and the models run stably in molecular dynamics and reproduce the
 thermal structure of the reference data;
 \item latent-charge electrostatics capture non-local charge effects in the long-range benchmarks, but the latent
@@ -992,6 +993,15 @@ both errors than published NequIP, Allegro and TensorNet results. The flagship b
 optimiser budget did not help (Table~S5), which suggests that the gain comes from the smoother labels on thermal
 configurations near the training data rather than from the amount of data.
 
+To test whether the protocol transfers without tuning, it was applied unchanged to malonaldehyde, with three
+\FACE-CP teachers ($C=96$, 400 epochs; single-model errors 1.12--1.22~meV and 7.13--7.38~meV/\AA; ensemble 0.98/6.02)
+and a $C=160$ student. The gate rejected 79 of 19,000 teacher-MD snapshots. After the DFT-only fine-tune, the single
+student reaches 0.91~meV and 5.46~meV/\AA, 24\% lower in force error than its teachers and better than the teacher
+ensemble; its force error is lower than published BOTNet (5.8) but higher than published NequIP (5.1), MACE (4.1) and
+Allegro (3.6)\cite{batatia2022mace,musaelian2023}. Across the three molecules, distillation lowers the force error of a
+single \FACE-CP model by a similar amount: 23\% for aspirin (8.73 to 6.74~meV/\AA), 23\% for ethanol (4.84 to
+3.72~meV/\AA, Section~\ref{sec:ethanol}) and 24\% for malonaldehyde.
+
 \begin{table}
 \caption{Aspirin, single models, 1000 test structures (meV, meV/\AA). Published values are from different protocols.}
 \label{tab:distill}
@@ -1029,6 +1039,7 @@ published GotenNet$^a$\cite{aykent2025gotennet} & 1.55 & 5.66 \\
 \end{figure}
 
 \subsubsection{Ethanol}
+\label{sec:ethanol}
 \emph{On ethanol the gap to published values is a matter of training protocol, not of the model.} On ethanol,
 \FACE{} trails the published best values considerably more than on aspirin (single models 0.74--0.78/
 4.7--4.9 vs 0.4/2.1). A control resolves this: MACE-small trained with the identical 400-epoch protocol reaches
@@ -1289,7 +1300,7 @@ was obtained in float64, and MACE was timed without the cuEquivariance kernels t
 speed ratios to MACE would shrink with those kernels; a comparison on multi-GPU or CPU hardware and in production
 MD codes is outstanding. The advantage concerns inference: training steps cost about as much as MACE-small, and a
 distilled model requires roughly an order of magnitude more training compute than a single model. Distillation was
-demonstrated on aspirin and ethanol only and does not add information beyond the 950 reference structures; it
+demonstrated on three molecules (aspirin, ethanol and malonaldehyde) and does not add information beyond the 950 reference structures; it
 transfers the ensemble's averaged knowledge onto thermally sampled configurations. \FACE{} does not reach the most
 accurate published aspirin results (ViSNet 1.93/6.59, QuinNet 2.11/6.20, GotenNet 1.55/5.66 meV, meV/\AA), whose
 cost we have not measured. Several comparisons rest on single training runs, whose spread we quantified (about 3\%

@@ -488,3 +488,18 @@ Forces −12 % vs gen-1; vs MACE-small at equal protocol −45 % F, −44 % E. U
 does not improve ethanol energy (within noise of the standard fine-tune). Gap to the large published MACE remains
 ≈1.75× in F. Logs: runs/eth_gen2_cp160_ethanol_{try*,r*,s*}.log, runs/eth_gen2_cp160_ft_ethanol.log,
 runs/eth_gen2_eft_ethanol.log.
+
+### 4.32 Breadth: distillation on malonaldehyde (third molecule; same recipe, no tuning)
+Teachers: 3 × CP C96, 400 epochs (1.12 / 7.13, 1.15 / 7.14, 1.22 / 7.38); ensemble 0.975 / 6.02 (Spearman 0.83).
+Teacher MD 500 K, gate 13.1 meV/Å (3× test spread): 18,921 kept, 79 rejected; mean teacher spread 4.3 meV/Å.
+| single model, malonaldehyde | E MAE (meV) | F MAE (meV/Å) |
+|---|---|---|
+| CP C96 teacher (mean of 3) | 1.17 | 7.22 |
+| CP C160 distilled student | 1.03 | 5.97 |
+| **CP C160 distilled + DFT fine-tune** | **0.907** | **5.455** |
+| published BOTNet / NequIP | 0.8 / 0.8 | 5.8 / 5.1 |
+| published MACE / Allegro | 0.8 / 0.6 | 4.1 / 3.6 |
+−24 % F, −19 % E vs single teachers; the distilled single model beats its own teacher ensemble and published BOTNet on
+forces. Distillation gains now confirmed on aspirin, ethanol and malonaldehyde.
+GPU safety: all launches in this pipeline were gated (no nvlddmkm fault in 20 min, no python start in 2 min); no
+driver faults were triggered by these launches after gating was introduced.
