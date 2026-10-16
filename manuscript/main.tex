@@ -1052,7 +1052,9 @@ model further. A first generation with a three-model teacher gives 0.68/4.22. A 
 teacher includes the first student (teacher error 0.60/3.73) and whose student is a wider \FACE-CP with $C=160$, gives
 0.62/3.72 after the DFT-only fine-tune: the single student now matches its teacher, and its force error is 45\% below
 that of MACE-small under the same protocol. Unlike for aspirin, an additional energy-weighted fine-tune did not lower
-the ethanol energy error (0.64/3.68). The gap to the published MACE value (0.4/2.1) remains about 1.8-fold in the
+the ethanol energy error (0.64/3.68). A third generation, with a six-model teacher that includes both earlier
+students, gives 0.63/3.79, no improvement within seed noise: distillation saturates after one large step and at most
+one further small one (2\% for malonaldehyde, none here), so further gains must come from the model itself. The gap to the published MACE value (0.4/2.1) remains about 1.8-fold in the
 forces. Ethanol has a low-barrier methyl and hydroxyl rotation, and
 its small size gives only eight neighbours per atom on average; both make it more sensitive to the description of
 torsions than aspirin.
