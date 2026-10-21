@@ -1,0 +1,10 @@
+runs/long_flag_aspirin.pt {"E_MAE": 3.13, "E_RMSE": 4.417, "F_MAE": 9.075, "F_RMSE": 13.859}
+runs/distill_flag_ft_aspirin.pt {"E_MAE": 3.133, "E_RMSE": 4.373, "F_MAE": 8.043, "F_RMSE": 12.292}
+runs/long_cp_aspirin.pt {"E_MAE": 2.877, "E_RMSE": 4.592, "F_MAE": 8.729, "F_RMSE": 13.607}
+runs/distill_gen3_cp_ft_aspirin.pt {"E_MAE": 2.498, "E_RMSE": 3.604, "F_MAE": 6.966, "F_RMSE": 10.689}
+runs/gen4_eft_aspirin.pt {"E_MAE": 2.261, "E_RMSE": 3.231, "F_MAE": 6.738, "F_RMSE": 10.427}
+runs/mace/mace_small_aspirin_stagetwo.model {"E_MAE": 10.602, "E_RMSE": 15.132, "F_MAE": 19.514, "F_RMSE": 28.524}
+runs/mace/mace_med_aspirin_stagetwo.model {"E_MAE": 9.129, "E_RMSE": 12.854, "F_MAE": 17.795, "F_RMSE": 26.328}
+runs/eth_cp_s0_ethanol.pt {"E_MAE": 0.781, "E_RMSE": 1.214, "F_MAE": 4.838, "F_RMSE": 8.523}
+runs/eth_distill_cp_ft_ethanol.pt {"E_MAE": 0.679, "E_RMSE": 1.062, "F_MAE": 4.224, "F_RMSE": 7.922}
+runs/mace/mace400_ethanol_stagetwo.model {"E_MAE": 1.106, "E_RMSE": 1.731, "F_MAE": 6.757, "F_RMSE": 12.016}

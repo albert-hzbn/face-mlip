@@ -1,0 +1,20 @@
+FACE B=16 K=32 kdir=16 fused=0 {"model": "face", "atoms": 168, "ms_per_step": 21.904984999946464, "us_per_atom": 130.3868154758718, "peak_MB": 203.79833984375}
+FACE B=16 K=32 kdir=16 fused=0 {"model": "face", "atoms": 1344, "ms_per_step": 136.60816000001432, "us_per_atom": 101.64297619048685, "peak_MB": 1477.81689453125}
+FACE B=16 K=32 kdir=16 fused=0 {"model": "face", "atoms": 4536, "ms_per_step": 482.5343700000303, "us_per_atom": 106.37882936508605, "peak_MB": 4904.66015625}
+FACE B=16 K=32 kdir=16 fused=1 {"model": "face", "atoms": 168, "ms_per_step": 19.104685000002064, "us_per_atom": 113.71836309525038, "peak_MB": 160.21630859375}
+FACE B=16 K=32 kdir=16 fused=1 {"model": "face", "atoms": 1344, "ms_per_step": 98.72296000003189, "us_per_atom": 73.45458333335706, "peak_MB": 1129.95947265625}
+FACE B=16 K=32 kdir=16 fused=1 {"model": "face", "atoms": 4536, "ms_per_step": 350.0322299999425, "us_per_atom": 77.16759920633652, "peak_MB": 3735.2978515625}
+FACE B=32 K=32 kdir=16 fused=0 {"model": "face", "atoms": 168, "ms_per_step": 28.527744999973947, "us_per_atom": 169.80800595222587, "peak_MB": 302.50390625}
+FACE B=32 K=32 kdir=16 fused=0 {"model": "face", "atoms": 1344, "ms_per_step": 198.04936499995165, "us_per_atom": 147.3581584821069, "peak_MB": 2274.25}
+FACE B=32 K=32 kdir=16 fused=0 {"model": "face", "atoms": 4536, "ms_per_step": 688.9468049999778, "us_per_atom": 151.88421626983634, "peak_MB": 7606.23486328125}
+FACE B=32 K=32 kdir=16 fused=1 {"model": "face", "atoms": 168, "ms_per_step": 21.65538999997807, "us_per_atom": 128.9011309522504, "peak_MB": 194.20654296875}
+FACE B=32 K=32 kdir=16 fused=1 {"model": "face", "atoms": 1344, "ms_per_step": 138.40719999998328, "us_per_atom": 102.98154761903518, "peak_MB": 1381.9736328125}
+FACE B=32 K=32 kdir=16 fused=1 {"model": "face", "atoms": 4536, "ms_per_step": 481.3117699999566, "us_per_atom": 106.10929673720383, "peak_MB": 4581.423828125}
+FACE B=16 K=32 kdir=48 fused=1 {"model": "face", "atoms": 168, "ms_per_step": 23.28010000001086, "us_per_atom": 138.57202380958847, "peak_MB": 221.46630859375}
+FACE B=16 K=32 kdir=48 fused=1 {"model": "face", "atoms": 1344, "ms_per_step": 177.3156199999903, "us_per_atom": 131.93126488094518, "peak_MB": 1613.06640625}
+FACE B=16 K=32 kdir=48 fused=1 {"model": "face", "atoms": 4536, "ms_per_step": 613.4868099999949, "us_per_atom": 135.2484149029971, "peak_MB": 5364.3310546875}
+{"model": "mace_small", "atoms": 168, "ms_per_step": 32.68154500001401, "us_per_atom": 194.53300595246432, "peak_MB": 368.31396484375}
+{"model": "mace_paper", "atoms": 168, "ms_per_step": 274.4474699999955, "us_per_atom": 1633.6158928571163, "peak_MB": 2858.17236328125}
+{"model": "mace_small", "atoms": 1344, "ms_per_step": 258.13004500005263, "us_per_atom": 192.06104538694393, "peak_MB": 2756.7841796875}
+{"model": "mace_paper", "atoms": 1344, "OOM": true}
+{"model": "mace_small", "atoms": 4536, "ms_per_step": 887.8250300000218, "us_per_atom": 195.7286221340436, "peak_MB": 9211.25048828125}

@@ -1,0 +1,19 @@
+# third-party data sets: download from the original archives (see README, "Data")
+data/rmd17/
+data/ko2021/
+# derived from rMD17 by tools/make_xyz.py
+data/xyz/
+# MACE baseline models (retrain with tools/train_mace.sh)
+runs/mace/
+# debugging state
+runs/nan_state.pt
+# Python / LaTeX build products
+__pycache__/
+*.pyc
+manuscript/*Notes.bib
+
+# manuscript is kept locally, not published
+manuscript/
+# documentation and experiment notes are kept locally, not published
+docs/
+runs/ko2021_paper.txt

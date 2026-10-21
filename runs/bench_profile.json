@@ -1,0 +1,23 @@
+{
+ "FACE flagship": {
+  "elementwise and other": 65.52379114884104,
+  "fused density kernel": 14.631290417010405,
+  "dense matrix products (GEMM)": 10.387892416460424,
+  "fused node kernel": 3.996904134621355,
+  "gather / scatter (neighbour indexing)": 2.8580204202925548,
+  "reductions": 2.6021014627742147
+ },
+ "FACE-CP C96": {
+  "elementwise and other": 74.1889590358479,
+  "dense matrix products (GEMM)": 16.932548720976982,
+  "reductions": 3.7775999404168843,
+  "gather / scatter (neighbour indexing)": 2.630320966036864,
+  "fused node kernel": 2.470571336721363
+ },
+ "MACE-small": {
+  "elementwise and other": 61.38233986972294,
+  "dense matrix products (GEMM)": 29.64862163301295,
+  "reductions": 4.619584853919802,
+  "gather / scatter (neighbour indexing)": 4.349453643344305
+ }
+}

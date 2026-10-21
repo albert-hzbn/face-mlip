@@ -1,0 +1,16 @@
+D:\Work\MLIP\tools\md_nve.py:23: DeprecationWarning: Use thermalize_momenta
+  MaxwellBoltzmannDistribution(at, temperature_K=T, rng=rng); Stationary(at); ZeroRotation(at)
+{
+ "ckpt": "runs/v4_B32K32_aspirin.pt",
+ "mol": "aspirin",
+ "T0": 500.0,
+ "steps": 40000,
+ "dt_fs": 0.5,
+ "sim_ps": 20.0,
+ "bond_broken": false,
+ "mean_T": 456.5317429292037,
+ "drift_meV_per_atom_per_ps": 0.00028541060703248796,
+ "E_tot_std_meV_per_atom": 0.06888579508626794,
+ "E_tot_maxdev_meV_per_atom": 0.2895918790142917,
+ "wall_s": 1873.7843372821808
+}

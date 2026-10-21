@@ -1,0 +1,33 @@
+{
+ "MACE-small": {
+  "us_per_atom_median": 193.96315477760731,
+  "us_per_atom_min": 191.61321428587794,
+  "us_per_atom_max": 200.58535717128376,
+  "speedup_vs_MACE-small": 1.0
+ },
+ "MACE 256 ch L=2": {
+  "us_per_atom_median": 1626.333214292009,
+  "us_per_atom_min": 1620.1692857153137,
+  "us_per_atom_max": 1631.8160714512314,
+  "speedup_vs_MACE-small": 0.11926409242157993
+ },
+ "FACE flagship": {
+  "us_per_atom_median": 98.64869046266125,
+  "us_per_atom_min": 89.92595238461425,
+  "us_per_atom_max": 112.95214287764836,
+  "speedup_vs_MACE-small": 1.966201009541255
+ },
+ "FACE-CP C96": {
+  "us_per_atom_median": 91.00107142460598,
+  "us_per_atom_min": 84.18702380454522,
+  "us_per_atom_max": 109.4072619231329,
+  "speedup_vs_MACE-small": 2.1314381439816894
+ },
+ "FACE-CP C160": {
+  "us_per_atom_median": 107.60880951628289,
+  "us_per_atom_min": 104.4339285900129,
+  "us_per_atom_max": 134.62011903313743,
+  "speedup_vs_MACE-small": 1.802483975517429
+ },
+ "atoms": 168
+}

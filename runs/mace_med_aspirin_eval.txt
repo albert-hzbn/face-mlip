@@ -1,0 +1,1 @@
+runs/mace/mace_med_aspirin_stagetwo.model {"E_MAE": 9.129, "E_RMSE": 12.854, "F_MAE": 17.795, "F_RMSE": 26.328}

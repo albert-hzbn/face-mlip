@@ -1,0 +1,3 @@
+11013 structures, elements [np.int64(47)], terms ['coulomb'], params 792580
+{"E_MAE_meV_atom": 104.845, "E_RMSE_meV_atom": 134.761, "F_MAE_meV_A": 47.327, "F_RMSE_meV_A": 88.85, "epoch": 0, "time": 89.381}
+{"E_MAE_meV_atom": NaN, "E_RMSE_meV_atom": NaN, "F_MAE_meV_A": NaN, "F_RMSE_meV_A": NaN, "epoch": 10, "time": 855.957}

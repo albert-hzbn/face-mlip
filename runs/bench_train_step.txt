@@ -1,0 +1,5 @@
+MACE-small       params   204,432   train step   97.2 ms   relative to MACE-small 1.00x
+MACE-medium      params   604,432   train step  130.9 ms   relative to MACE-small 1.35x
+FACE flagship    params 1,561,506   train step   93.4 ms   relative to MACE-small 0.96x
+FACE-CP C96      params 1,308,514   train step   92.6 ms   relative to MACE-small 0.95x
+FACE-CP C160     params 3,360,226   train step   95.1 ms   relative to MACE-small 0.98x

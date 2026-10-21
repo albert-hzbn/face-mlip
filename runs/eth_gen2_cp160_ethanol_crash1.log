@@ -1,0 +1,20 @@
+distillation: 18872 teacher-labelled + 950x4 DFT configurations
+params 3360226  avg_nb 8.00  scale 1.195
+{"epoch": 0, "loss": 42.99336671145624, "val_E": 55.82747459411621, "val_F": 49.408908420138886, "time": 541.0975391864777}
+{"epoch": 2, "loss": 4.33094527175051, "val_E": 28.83838653564453, "val_F": 18.881039089626736, "time": 1778.4265241622925}
+{"epoch": 4, "loss": 2.0338730856966856, "val_E": 19.9621844291687, "val_F": 12.424991748951099, "time": 3252.262260198593}
+{"epoch": 6, "loss": 0.9191912011784449, "val_E": 9.286658763885498, "val_F": 8.52037853664822, "time": 4663.321239948273}
+{"epoch": 8, "loss": 0.3641627956178478, "val_E": 3.1695228815078735, "val_F": 6.606443899649161, "time": 5873.539131164551}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Work\MLIP\face-mlip\face\train.py", line 209, in <module>
+    main()
+  File "D:\Work\MLIP\face-mlip\face\train.py", line 186, in main
+    tl += loss.item()
+          ^^^^^^^^^^^
+RuntimeError: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

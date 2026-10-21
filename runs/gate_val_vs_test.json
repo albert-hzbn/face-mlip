@@ -1,0 +1,29 @@
+{
+ "ethanol": {
+  "val_spread": 3.332485571728661,
+  "test_spread": 3.189703949072183,
+  "thr_val": 9.997456715185983,
+  "thr_test": 9.569111847216549,
+  "kept": 18872,
+  "kept_but_above_val_thr": 0,
+  "max_kept_spread": 9.48868953700888
+ },
+ "malonaldehyde": {
+  "val_spread": 4.069980192912261,
+  "test_spread": 4.3687162116069285,
+  "thr_val": 12.209940578736784,
+  "thr_test": 13.106148634820785,
+  "kept": 18921,
+  "kept_but_above_val_thr": 43,
+  "max_kept_spread": 13.07755739915953
+ },
+ "aspirin": {
+  "val_spread": 6.498819940928392,
+  "test_spread": 6.633310895624888,
+  "thr_val": 19.496459822785177,
+  "thr_test": 19.899932686874664,
+  "kept": 18917,
+  "kept_but_above_val_thr": 0,
+  "max_kept_spread": 16.470964068023395
+ }
+}

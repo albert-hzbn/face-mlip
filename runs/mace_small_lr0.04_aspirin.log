@@ -1,0 +1,148 @@
+D:\Work\MLIP\.venv\Lib\site-packages\e3nn\o3\_wigner.py:10: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+2026-10-20 17:12:52.853 INFO: ===========VERIFYING SETTINGS===========
+2026-10-20 17:12:52.853 INFO: Stage Two is activated as start_stage_two was defined
+2026-10-20 17:12:52.853 INFO: MACE version: 0.3.16
+2026-10-20 17:12:52.853 INFO: CUDA version: 12.4, CUDA device: 0
+2026-10-20 17:12:53.007 INFO: ===========LOADING INPUT DATA===========
+2026-10-20 17:12:53.007 INFO: Using heads: ['Default']
+2026-10-20 17:12:53.007 INFO: Using the key specifications to parse data:
+2026-10-20 17:12:53.007 INFO: Default: KeySpecification(info_keys={'energy': 'REF_energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'REF_forces', 'charges': 'REF_charges'})
+2026-10-20 17:12:53.007 INFO: =============    Processing head Default     ===========
+2026-10-20 17:12:53.378 INFO: Training set 1/1 [energy: 950, stress: 0, virials: 0, dipole components: 0, head: 950, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 950, charges: 0]
+2026-10-20 17:12:53.380 INFO: Total Training set [energy: 950, stress: 0, virials: 0, dipole components: 0, head: 950, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 950, charges: 0]
+2026-10-20 17:12:53.386 INFO: Validation set 1/1 [energy: 50, stress: 0, virials: 0, dipole components: 0, head: 50, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 50, charges: 0]
+2026-10-20 17:12:53.386 INFO: Total Validation set [energy: 50, stress: 0, virials: 0, dipole components: 0, head: 50, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 50, charges: 0]
+2026-10-20 17:12:53.572 INFO: Test set 1/1 [energy: 1000, stress: 0, virials: 0, dipole components: 0, head: 1000, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1000, charges: 0]
+2026-10-20 17:12:53.576 INFO: Total Test set [energy: 1000, stress: 0, virials: 0, dipole components: 0, head: 1000, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1000, charges: 0]
+2026-10-20 17:12:53.576 INFO: Total number of configurations: train=950, valid=50, tests=[Default_Default: 1000],
+2026-10-20 17:12:53.576 INFO: Atomic Numbers used: [np.int64(1), np.int64(6), np.int64(8)]
+2026-10-20 17:12:53.576 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2026-10-20 17:12:53.576 INFO: Computing average Atomic Energies using least squares regression
+2026-10-20 17:12:53.576 INFO: Atomic Energies used (z: eV) for head Default: {1: -875.4155745732841, 6: -984.8425213949386, 8: -437.70778728663777}
+2026-10-20 17:12:53.576 INFO: Processing datasets for head 'Default'
+2026-10-20 17:12:53.991 INFO: Combining 1 list datasets for head 'Default'
+2026-10-20 17:12:54.020 INFO: Combining 1 list datasets for head 'Default_valid'
+2026-10-20 17:12:54.020 INFO: Combined validation datasets for Default
+2026-10-20 17:12:54.020 INFO: Head 'Default' training dataset size: 950
+2026-10-20 17:12:54.020 INFO: Computing average number of neighbors
+2026-10-20 17:12:54.393 INFO: Average number of neighbors: 14.39719295501709
+2026-10-20 17:12:54.393 INFO: During training the following quantities will be reported: energy, forces
+2026-10-20 17:12:54.393 INFO: ===========MODEL DETAILS===========
+2026-10-20 17:12:54.807 INFO: Building model
+2026-10-20 17:12:54.807 INFO: Message passing with 64 channels and max_L=1 (64x0e+64x1o)
+2026-10-20 17:12:54.807 INFO: 2 layers, each with correlation order: 3 (body order: 4) and spherical harmonics up to: l=3
+2026-10-20 17:12:54.807 INFO: 8 radial and 5 basis functions
+2026-10-20 17:12:54.807 INFO: Radial cutoff: 5.0 A (total receptive field for each atom: 10.0 A)
+2026-10-20 17:12:54.807 INFO: Distance transform for radial basis functions: None
+2026-10-20 17:12:54.807 INFO: Hidden irreps: 64x0e+64x1o
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+2026-10-20 17:12:55.855 INFO: ===========OPTIMIZER INFORMATION===========
+2026-10-20 17:12:55.855 INFO: Using ADAM as parameter optimizer
+2026-10-20 17:12:55.855 INFO: Batch size: 5
+2026-10-20 17:12:55.855 INFO: Using Exponential Moving Average with decay: 0.99
+2026-10-20 17:12:55.855 INFO: Number of gradient updates: 11400
+2026-10-20 17:12:55.855 INFO: Learning rate: 0.04, weight decay: 5e-07
+2026-10-20 17:12:55.855 INFO: WeightedEnergyForcesLoss(energy_weight=1.000, forces_weight=1000.000)
+2026-10-20 17:12:55.855 INFO: === Layer's learning rates ===
+2026-10-20 17:12:55.855 INFO: Param group 0: lr = 0.04
+2026-10-20 17:12:55.855 INFO: Param group 1: lr = 0.04
+2026-10-20 17:12:55.855 INFO: Param group 2: lr = 0.04
+2026-10-20 17:12:55.855 INFO: Param group 3: lr = 0.04
+2026-10-20 17:12:55.855 INFO: Param group 4: lr = 0.04
+2026-10-20 17:12:55.855 INFO: Stage Two (after 45 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2026-10-20 17:12:55.949 INFO: Using gradient clipping with tolerance=10.000
+2026-10-20 17:12:55.949 INFO: 
+2026-10-20 17:12:55.949 INFO: ===========TRAINING===========
+2026-10-20 17:12:55.949 INFO: Started training, reporting errors on validation set
+2026-10-20 17:12:55.949 INFO: Loss metrics on validation set
+2026-10-20 17:12:56.522 INFO: Initial: head: Default, loss=31.34901619, RMSE_E_per_atom=   13.74 meV, RMSE_F= 1251.98 meV / A
+2026-10-20 17:13:20.986 INFO: Epoch 0: head: Default, loss=0.56001228, RMSE_E_per_atom=  275.75 meV, RMSE_F=  167.11 meV / A
+2026-10-20 17:16:24.495 INFO: Epoch 10: head: Default, loss=0.06027948, RMSE_E_per_atom=  344.33 meV, RMSE_F=   53.81 meV / A
+2026-10-20 17:19:26.591 INFO: Epoch 20: head: Default, loss=0.03868110, RMSE_E_per_atom=  299.67 meV, RMSE_F=   42.94 meV / A
+2026-10-20 17:22:32.799 INFO: Epoch 30: head: Default, loss=0.02772699, RMSE_E_per_atom=  263.10 meV, RMSE_F=   36.29 meV / A
+2026-10-20 17:25:36.757 INFO: Epoch 40: head: Default, loss=0.02380797, RMSE_E_per_atom=  240.76 meV, RMSE_F=   33.65 meV / A
+2026-10-20 17:26:50.477 INFO: Changing loss based on Stage Two Weights
+2026-10-20 17:28:42.899 INFO: Epoch 50: head: Default, loss=0.00268703, RMSE_E_per_atom=    0.90 meV, RMSE_F=   36.54 meV / A
+2026-10-20 17:31:24.539 INFO: Training complete
+2026-10-20 17:31:24.539 INFO: 
+2026-10-20 17:31:24.539 INFO: ===========RESULTS===========
+2026-10-20 17:31:25.145 INFO: Loading checkpoint: runs/mace/ckpt\mace_small_lr0.04_aspirin_run-0_epoch-40.pt
+D:\Work\MLIP\.venv\Lib\site-packages\mace\tools\checkpoint.py:187: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  torch.load(f=checkpoint_info.path, map_location=device),
+2026-10-20 17:31:25.204 INFO: Loaded Stage one model from epoch 40 for evaluation
+2026-10-20 17:31:25.204 INFO: Saving model to runs\mace\ckpt\mace_small_lr0.04_aspirin_run-0.model
+2026-10-20 17:31:25.341 INFO: Compiling model, saving metadata to runs\mace\mace_small_lr0.04_aspirin_compiled.model
+2026-10-20 17:31:25.923 INFO: Computing metrics for training, validation, and test sets
+2026-10-20 17:31:25.924 INFO: Skipping evaluation for heads: ['pt_head']
+2026-10-20 17:31:25.924 INFO: Evaluating train_Default ...
+2026-10-20 17:31:35.603 INFO: Evaluating valid_Default ...
+2026-10-20 17:31:35.831 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |          240.8      |         28.2     |          2.24     |
+| valid_Default |          240.8      |         33.7     |          2.69     |
++---------------+---------------------+------------------+-------------------+
+2026-10-20 17:31:35.831 INFO: Evaluating Default_Default ...
+2026-10-20 17:31:39.285 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |          240.8      |         35.3     |          2.78     |
++-----------------+---------------------+------------------+-------------------+
+2026-10-20 17:31:56.377 INFO: Loading checkpoint: runs/mace/ckpt\mace_small_lr0.04_aspirin_run-0_epoch-50_swa.pt
+D:\Work\MLIP\.venv\Lib\site-packages\mace\tools\checkpoint.py:187: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  torch.load(f=checkpoint_info.path, map_location=device),
+2026-10-20 17:31:56.442 INFO: Loaded Stage two model from epoch 50 for evaluation
+2026-10-20 17:31:56.442 INFO: Saving model to runs\mace\ckpt\mace_small_lr0.04_aspirin_run-0_stagetwo.model
+2026-10-20 17:31:56.607 INFO: Compiling model, saving metadata runs\mace\mace_small_lr0.04_aspirin_stagetwo_compiled.model
+D:\Work\MLIP\.venv\Lib\site-packages\torch\jit\_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+2026-10-20 17:31:57.231 INFO: Computing metrics for training, validation, and test sets
+2026-10-20 17:31:57.231 INFO: Skipping evaluation for heads: ['pt_head']
+2026-10-20 17:31:57.231 INFO: Evaluating train_Default ...
+2026-10-20 17:32:06.919 INFO: Evaluating valid_Default ...
+2026-10-20 17:32:07.102 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.8      |         32.2     |          2.55     |
+| valid_Default |            0.9      |         36.5     |          2.92     |
++---------------+---------------------+------------------+-------------------+
+2026-10-20 17:32:07.102 INFO: Evaluating Default_Default ...
+2026-10-20 17:32:10.607 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            0.9      |         38.7     |          3.04     |
++-----------------+---------------------+------------------+-------------------+
+2026-10-20 17:32:28.298 INFO: Done

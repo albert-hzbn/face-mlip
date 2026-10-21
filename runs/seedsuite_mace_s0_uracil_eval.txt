@@ -1,0 +1,1 @@
+runs/mace/seedsuite_mace_s0_uracil_stagetwo.model {"E_MAE": 2.323, "E_RMSE": 3.504, "F_MAE": 12.362, "F_RMSE": 18.286}

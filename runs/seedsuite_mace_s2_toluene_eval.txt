@@ -1,0 +1,1 @@
+runs/mace/seedsuite_mace_s2_toluene_stagetwo.model {"E_MAE": 1.854, "E_RMSE": 2.534, "F_MAE": 7.851, "F_RMSE": 11.436}

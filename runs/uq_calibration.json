@@ -1,0 +1,60 @@
+{
+ "members": 5,
+ "estimator": "sample std (ddof=1) over members",
+ "spearman_structure": 0.8371872331872332,
+ "mean_spread_meV_A": 7.416267837057018,
+ "mean_abs_error_meV_A": 7.0942294548765314,
+ "binned_component_deciles": [
+  {
+   "spread_rms": 1.678018958897584,
+   "error_rms": 3.614626504735686
+  },
+  {
+   "spread_rms": 2.629491732859817,
+   "error_rms": 4.583260749055747
+  },
+  {
+   "spread_rms": 3.44667256936431,
+   "error_rms": 5.530027413426517
+  },
+  {
+   "spread_rms": 4.306204798295463,
+   "error_rms": 6.567915964202937
+  },
+  {
+   "spread_rms": 5.2849298714143975,
+   "error_rms": 7.96697397385064
+  },
+  {
+   "spread_rms": 6.430843465035523,
+   "error_rms": 9.103369962805619
+  },
+  {
+   "spread_rms": 7.828341175501382,
+   "error_rms": 10.466443885909097
+  },
+  {
+   "spread_rms": 9.655087737915252,
+   "error_rms": 11.926169941865426
+  },
+  {
+   "spread_rms": 12.476873296481278,
+   "error_rms": 14.494386453094156
+  },
+  {
+   "spread_rms": 21.885109930585156,
+   "error_rms": 23.012159486013235
+  }
+ ],
+ "nll_component": 3.8781180950937477,
+ "recalibration_factor": 1.5593919048824503,
+ "nll_component_recalibrated": 3.6065624792926556,
+ "fraction_within_1sigma": 0.5923650793650793,
+ "fraction_within_2sigma": 0.8559523809523809,
+ "spearman_vs_ensemble_size": {
+  "2": 0.7802099210099211,
+  "3": 0.8187181071181071,
+  "4": 0.8315320235320236,
+  "5": 0.8371872331872332
+ }
+}

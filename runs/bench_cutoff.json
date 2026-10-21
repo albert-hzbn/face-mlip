@@ -1,0 +1,27 @@
+{
+ "MACE-small rc5.0": {
+  "us_per_atom_median": 189.12989583744397,
+  "us_per_atom_min": 188.45223214503633,
+  "us_per_atom_max": 189.73058035737182,
+  "speedup_vs_MACE-small_rc5.0": 1.0
+ },
+ "MACE-small rc4.5": {
+  "us_per_atom_median": 145.7030654776082,
+  "us_per_atom_min": 145.1289880952529,
+  "us_per_atom_max": 146.2474553547855,
+  "speedup_vs_MACE-small_rc5.0": 1.2980502175262034
+ },
+ "FACE flagship rc4.5": {
+  "us_per_atom_median": 32.72580357328739,
+  "us_per_atom_min": 32.466666665901094,
+  "us_per_atom_max": 33.55709821421659,
+  "speedup_vs_MACE-small_rc5.0": 5.779228473760755
+ },
+ "FACE flagship rc5.0": {
+  "us_per_atom_median": 38.87553571292388,
+  "us_per_atom_min": 38.26717261940108,
+  "us_per_atom_max": 39.1322619049918,
+  "speedup_vs_MACE-small_rc5.0": 4.865010664652247
+ },
+ "atoms": 1344
+}

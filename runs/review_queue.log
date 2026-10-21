@@ -1,0 +1,86 @@
+16:29:36 START bench cutoff
+16:33:12 END rc=0
+16:33:13 START bench small
+16:34:10 END rc=0
+16:34:11 START bench profile
+16:34:27 END rc=1
+16:34:27 START bench qeq
+16:35:54 END rc=0
+16:35:55 START default-param lr 0.02
+16:54:59 END rc=0
+16:55:00 START default-param lr 0.04
+17:14:19 END rc=0
+17:14:20 START fine-tune-only control
+17:14:23 END rc=1
+17:14:24 START CP C160 DFT only, 400 epochs
+18:44:21 END rc=0
+18:44:22 START Ko Ag local
+18:52:06 END rc=0
+18:52:07 START Ko Ag coulomb
+19:00:31 END rc=0
+19:00:32 START Ko C10 rc3 local
+19:07:56 END rc=0
+19:07:56 START Ko C10 rc3 qeq
+19:16:44 END rc=0
+19:16:47 START FACE aspirin seed 1
+19:32:27 END rc=0
+19:32:28 START FACE aspirin seed 2
+19:44:41 END rc=0
+19:44:42 START MACE aspirin seed 0
+19:57:28 END rc=0
+19:58:03 START MACE aspirin seed 1
+20:10:49 END rc=0
+20:11:23 START MACE aspirin seed 2
+20:24:09 END rc=0
+20:24:45 START FACE malonaldehyde seed 1
+20:35:37 END rc=0
+20:35:38 START FACE malonaldehyde seed 2
+20:46:27 END rc=0
+20:46:27 START MACE malonaldehyde seed 0
+20:59:02 END rc=0
+20:59:35 START MACE malonaldehyde seed 1
+21:11:16 END rc=0
+21:11:47 START MACE malonaldehyde seed 2
+21:24:21 END rc=0
+21:24:54 START FACE uracil seed 1
+21:36:31 END rc=0
+21:36:32 START FACE uracil seed 2
+21:47:18 END rc=0
+21:47:18 START MACE uracil seed 0
+22:00:06 END rc=0
+22:00:40 START MACE uracil seed 1
+22:12:30 END rc=0
+22:13:04 START MACE uracil seed 2
+22:25:47 END rc=0
+22:26:23 START FACE toluene seed 1
+22:38:22 END rc=0
+22:38:23 START FACE toluene seed 2
+22:50:28 END rc=0
+22:50:30 START MACE toluene seed 0
+23:03:39 END rc=0
+23:04:15 START MACE toluene seed 1
+23:17:02 END rc=0
+23:17:36 START MACE toluene seed 2
+23:29:28 END rc=0
+23:30:04 START MACE ethanol seed 0
+23:42:37 END rc=0
+23:43:10 START MACE ethanol seed 1
+23:55:41 END rc=0
+23:56:14 START MACE ethanol seed 2
+00:08:47 END rc=0
+00:09:20 START MD long_flag_aspirin
+00:23:28 END rc=0
+00:23:29 START MD gen4_eft_aspirin
+00:37:19 END rc=0
+00:37:19 START MD eth_gen2_cp160_ft_ethanol
+00:50:59 END rc=0
+00:51:00 START MD mal_gen2_cp160_ft_malonaldehyde
+01:03:51 END rc=0
+01:03:51 QUEUE DONE
+01:03:57 START bench profile
+01:04:20 END rc=0
+01:04:21 START bench cutoff (15 rounds)
+01:05:11 END rc=0
+01:05:12 START bench 168 atoms (15 rounds)
+01:05:48 END rc=0
+01:05:48 QUEUE2 DONE

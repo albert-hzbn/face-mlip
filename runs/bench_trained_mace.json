@@ -1,0 +1,6 @@
+{
+ "bench MACE 64": 1.0,
+ "trained MACE-small": 1.1549825252804624,
+ "bench MACE 128": 1.951094167878956,
+ "trained MACE-medium": 2.0682228106951492
+}

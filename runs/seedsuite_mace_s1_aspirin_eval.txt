@@ -1,0 +1,1 @@
+runs/mace/seedsuite_mace_s1_aspirin_stagetwo.model {"E_MAE": 10.404, "E_RMSE": 13.999, "F_MAE": 18.502, "F_RMSE": 26.895}

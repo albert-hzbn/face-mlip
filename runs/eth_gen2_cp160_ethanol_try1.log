@@ -1,0 +1,3 @@
+distillation: 18872 teacher-labelled + 950x4 DFT configurations
+params 3360226  avg_nb 8.00  scale 1.195
+{"epoch": 0, "loss": 43.296905346573006, "val_E": 19.465404748916626, "val_F": 48.31926699037905, "time": 537.4500768184662}

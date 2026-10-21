@@ -1,0 +1,24 @@
+== side 2
+MACE-small (64x0e+64x1o)               391.3 us/atom   speed-up vs MACE-small  1.00x
+v8 CP C96 B16 fused-node (accuracy)    165.2 us/atom   speed-up vs MACE-small  2.37x
+== side 3
+MACE-small (64x0e+64x1o)               415.3 us/atom   speed-up vs MACE-small  1.00x
+v8 CP C96 B16 fused-node (accuracy)    149.9 us/atom   speed-up vs MACE-small  2.77x
+== side 4
+MACE-small (64x0e+64x1o)               454.5 us/atom   speed-up vs MACE-small  1.00x
+v8 CP C96 B16 fused-node (accuracy)    142.1 us/atom   speed-up vs MACE-small  3.20x
+== side 5
+MACE-small (64x0e+64x1o)               413.1 us/atom   speed-up vs MACE-small  1.00x
+v8 CP C96 B16 fused-node (accuracy)    141.8 us/atom   speed-up vs MACE-small  2.91x
+== side 2
+MACE-small (64x0e+64x1o)               486.6 us/atom   speed-up vs MACE-small  1.00x
+FACE B16 C96 rc4.5 fused+compiled      207.8 us/atom   speed-up vs MACE-small  2.34x
+== side 3
+MACE-small (64x0e+64x1o)               418.3 us/atom   speed-up vs MACE-small  1.00x
+FACE B16 C96 rc4.5 fused+compiled       89.7 us/atom   speed-up vs MACE-small  4.67x
+== side 4
+MACE-small (64x0e+64x1o)               413.9 us/atom   speed-up vs MACE-small  1.00x
+FACE B16 C96 rc4.5 fused+compiled       73.4 us/atom   speed-up vs MACE-small  5.64x
+== side 5
+MACE-small (64x0e+64x1o)               490.2 us/atom   speed-up vs MACE-small  1.00x
+FACE B16 C96 rc4.5 fused+compiled       90.3 us/atom   speed-up vs MACE-small  5.43x

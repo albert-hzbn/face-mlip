@@ -1,0 +1,1 @@
+runs/mace/seedsuite_mace_s0_malonaldehyde_stagetwo.model {"E_MAE": 6.095, "E_RMSE": 7.942, "F_MAE": 17.086, "F_RMSE": 25.113}

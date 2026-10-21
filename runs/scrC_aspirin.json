@@ -1,0 +1,54 @@
+{
+ "args": {
+  "mol": "aspirin",
+  "C": 96,
+  "passes": 2,
+  "rc": 5.0,
+  "nbasis": 8,
+  "epochs": 5,
+  "bs": 5,
+  "lr": 0.01,
+  "wF": 1000.0,
+  "wE": 1.0,
+  "swa_frac": 0.25,
+  "ema": 0.99,
+  "terms": "",
+  "dtype": "float32",
+  "seed": 0,
+  "tag": "scrC",
+  "norm": "layer",
+  "transport": 1,
+  "saturate": 0,
+  "standardise": 0,
+  "momnorm": 0,
+  "calib": 0,
+  "calib_ln": 0,
+  "eqmsg": 1,
+  "factor": 1,
+  "B": 32,
+  "K": 32,
+  "kdir": 16,
+  "radial_hidden": 64,
+  "max_test": 200
+ },
+ "params": 1999042,
+ "test_E_meV": 30376.156616210938,
+ "test_F_meV_A": 897.3197040860615,
+ "train_time_s": 157.85846972465515,
+ "log": [
+  {
+   "epoch": 0,
+   "loss": 1339.1933118318257,
+   "val_E": 29731.8701171875,
+   "val_F": 901.5127418154761,
+   "time": 32.067665100097656
+  },
+  {
+   "epoch": 4,
+   "loss": 0.0,
+   "val_E": 30362.509765625,
+   "val_F": 899.1810825892857,
+   "time": 156.99930691719055
+  }
+ ]
+}

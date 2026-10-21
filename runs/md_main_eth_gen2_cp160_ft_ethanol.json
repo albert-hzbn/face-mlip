@@ -1,0 +1,14 @@
+{
+ "ckpt": "runs/eth_gen2_cp160_ft_ethanol.pt",
+ "mol": "ethanol",
+ "T0": 500.0,
+ "steps": 40000,
+ "dt_fs": 0.5,
+ "sim_ps": 20.0,
+ "bond_broken": false,
+ "mean_T": 363.73772832995945,
+ "drift_meV_per_atom_per_ps": -0.008199934586766766,
+ "E_tot_std_meV_per_atom": 0.121407737161506,
+ "E_tot_maxdev_meV_per_atom": 0.6441735851896939,
+ "wall_s": 814.1094617843628
+}

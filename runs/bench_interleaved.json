@@ -1,0 +1,11 @@
+{
+ "atoms": 2625,
+ "MACE-small (64x0e+64x1o)": {
+  "us_per_atom": 490.23235047546524,
+  "speedup_vs_MACE_small": 1.0
+ },
+ "FACE B16 C96 rc4.5 fused+compiled": {
+  "us_per_atom": 90.25922285703321,
+  "speedup_vs_MACE_small": 5.431382355817228
+ }
+}

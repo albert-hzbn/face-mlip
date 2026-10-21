@@ -1,0 +1,5 @@
+MACE-small aspirin, 60 epochs, learning-rate sweep (tools/eval_compare.py, 1000 test structures): E_MAE E_RMSE F_MAE F_RMSE
+lr 0.005: 11.262 16.079 21.456 31.263
+lr 0.01 (default; runs/mace_small_aspirin): 10.60 15.13 19.51 28.52
+lr 0.02: 12.393 16.253 20.906 30.885
+lr 0.04: 15.051 19.579 26.322 38.677

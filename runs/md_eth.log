@@ -1,0 +1,21 @@
+step 20: kept 941/950, mean spread 3.3 meV/A, T 560 K
+step 40: kept 936/950, mean spread 3.2 meV/A, T 569 K
+step 60: kept 943/950, mean spread 3.2 meV/A, T 548 K
+step 80: kept 942/950, mean spread 3.4 meV/A, T 528 K
+step 100: kept 943/950, mean spread 3.3 meV/A, T 523 K
+step 120: kept 940/950, mean spread 3.3 meV/A, T 526 K
+step 140: kept 942/950, mean spread 3.1 meV/A, T 536 K
+step 160: kept 942/950, mean spread 3.3 meV/A, T 526 K
+step 180: kept 946/950, mean spread 3.1 meV/A, T 529 K
+step 200: kept 941/950, mean spread 3.1 meV/A, T 525 K
+step 220: kept 947/950, mean spread 3.1 meV/A, T 524 K
+step 240: kept 946/950, mean spread 3.0 meV/A, T 522 K
+step 260: kept 948/950, mean spread 3.1 meV/A, T 513 K
+step 280: kept 942/950, mean spread 3.1 meV/A, T 516 K
+step 300: kept 944/950, mean spread 3.0 meV/A, T 514 K
+step 320: kept 947/950, mean spread 3.0 meV/A, T 515 K
+step 340: kept 947/950, mean spread 3.0 meV/A, T 513 K
+step 360: kept 944/950, mean spread 3.0 meV/A, T 509 K
+step 380: kept 948/950, mean spread 3.0 meV/A, T 510 K
+step 400: kept 943/950, mean spread 3.0 meV/A, T 507 K
+saved data/distill_md_ethanol.npz: 18872 snapshots, 128 rejected by the uncertainty gate

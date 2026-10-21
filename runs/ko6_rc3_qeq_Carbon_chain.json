@@ -1,0 +1,100 @@
+{
+ "args": {
+  "data": "data/ko2021/datasets/Carbon_chain/input.data",
+  "n_train": 2000,
+  "n_val": 200,
+  "n_test": 1000,
+  "C": 64,
+  "rc": 3.0,
+  "passes": 2,
+  "epochs": 60,
+  "bs": 16,
+  "lr": 0.005,
+  "wF": 100.0,
+  "terms": "qeq",
+  "transport": 1,
+  "saturate": 0,
+  "standardise": 0,
+  "momnorm": 0,
+  "calib": 0,
+  "calib_ln": 0,
+  "eq_linear": 0,
+  "max_body": 5,
+  "unit": 1,
+  "cp": 0,
+  "wd": 0.0,
+  "elem_proj": 0,
+  "poly": 0,
+  "t3": 0,
+  "eqmsg": 1,
+  "factor": 1,
+  "B": 16,
+  "K": 32,
+  "seed": 0,
+  "tag": "ko6_rc3_qeq"
+ },
+ "test": {
+  "E_MAE_meV_atom": 0.6086054162179835,
+  "E_RMSE_meV_atom": 0.8998670930392729,
+  "F_MAE_meV_A": 28.122030691267287,
+  "F_RMSE_meV_A": 43.5782214302119
+ },
+ "log": [
+  {
+   "E_MAE_meV_atom": 101.42665560357273,
+   "E_RMSE_meV_atom": 117.77014568381563,
+   "F_MAE_meV_A": 573.2932518870105,
+   "F_RMSE_meV_A": 878.1894853526552,
+   "epoch": 0,
+   "time": 9.35617733001709
+  },
+  {
+   "E_MAE_meV_atom": 5.260304877137969,
+   "E_RMSE_meV_atom": 6.1895430889615906,
+   "F_MAE_meV_A": 52.761522490554974,
+   "F_RMSE_meV_A": 76.39007246833215,
+   "epoch": 10,
+   "time": 95.61994695663452
+  },
+  {
+   "E_MAE_meV_atom": 2.025511976535199,
+   "E_RMSE_meV_atom": 2.243971726485851,
+   "F_MAE_meV_A": 37.45771878601142,
+   "F_RMSE_meV_A": 56.83934986880789,
+   "epoch": 20,
+   "time": 182.6018750667572
+  },
+  {
+   "E_MAE_meV_atom": 1.3731998784533062,
+   "E_RMSE_meV_atom": 1.5488537407114686,
+   "F_MAE_meV_A": 31.1692248016403,
+   "F_RMSE_meV_A": 48.66297154562599,
+   "epoch": 30,
+   "time": 269.68015360832214
+  },
+  {
+   "E_MAE_meV_atom": 1.749715042369644,
+   "E_RMSE_meV_atom": 1.9264429365358773,
+   "F_MAE_meV_A": 29.177277032543984,
+   "F_RMSE_meV_A": 46.014524698799306,
+   "epoch": 40,
+   "time": 355.79385805130005
+  },
+  {
+   "E_MAE_meV_atom": 0.5968685163028908,
+   "E_RMSE_meV_atom": 0.8660132337004248,
+   "F_MAE_meV_A": 28.78170337877794,
+   "F_RMSE_meV_A": 45.478081564582595,
+   "epoch": 50,
+   "time": 442.3077275753021
+  },
+  {
+   "E_MAE_meV_atom": 0.5957843560713627,
+   "E_RMSE_meV_atom": 0.8652587144065347,
+   "F_MAE_meV_A": 28.775531748685292,
+   "F_RMSE_meV_A": 45.46293410822618,
+   "epoch": 59,
+   "time": 521.2083556652069
+  }
+ ]
+}
