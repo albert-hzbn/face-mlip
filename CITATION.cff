@@ -8,6 +8,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-3723-1756"
 license: MIT
 repository-code: "https://github.com/albert-hzbn/face-mlip"
+doi: "10.5281/zenodo.24371220"
 keywords:
   - machine-learning interatomic potentials
   - atomic cluster expansion
