@@ -1,0 +1,7 @@
+member 0 (runs/mal_cp_s0_malonaldehyde.pt): E 1.123  F 7.133
+member 1 (runs/mal_cp_s1_malonaldehyde.pt): E 1.153  F 7.144
+member 2 (runs/mal_cp_s2_malonaldehyde.pt): E 1.221  F 7.377
+member 3 (runs/mal_distill_cp160_ft_malonaldehyde.pt): E 0.907  F 5.455
+ENSEMBLE of 4: E 0.922 meV  F 5.652 meV/A
+Spearman(spread, error) per structure: 0.847
+relabelled 18921 configurations with 4 models; mean force spread 3.50 meV/A

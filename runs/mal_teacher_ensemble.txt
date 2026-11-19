@@ -1,0 +1,5 @@
+member 0 (runs/mal_cp_s0_malonaldehyde.pt): E 1.123  F 7.133
+member 1 (runs/mal_cp_s1_malonaldehyde.pt): E 1.153  F 7.144
+member 2 (runs/mal_cp_s2_malonaldehyde.pt): E 1.221  F 7.377
+ENSEMBLE of 3: E 0.975 meV  F 6.017 meV/A
+Spearman(spread, error) per structure: 0.834

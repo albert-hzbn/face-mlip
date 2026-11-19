@@ -1,0 +1,9 @@
+member 0 (runs/eth_cp_s0_ethanol.pt): E 0.781  F 4.838
+member 1 (runs/eth_cp_s1_ethanol.pt): E 0.761  F 4.685
+member 2 (runs/eth_cp_s2_ethanol.pt): E 0.742  F 4.898
+member 3 (runs/eth_distill_cp_ft_ethanol.pt): E 0.679  F 4.224
+member 4 (runs/eth_gen2_cp160_ft_ethanol.pt): E 0.619  F 3.716
+member 5 (runs/eth_gen2_eft_ethanol.pt): E 0.636  F 3.680
+ENSEMBLE of 6: E 0.568 meV  F 3.510 meV/A
+Spearman(spread, error) per structure: 0.862
+relabelled 18872 configurations with 6 models; mean force spread 2.33 meV/A
