@@ -1,0 +1,24 @@
+distillation: 18872 teacher-labelled + 950x4 DFT configurations
+initialised from runs/eth_gen2_cp160_ethanol_resume1.pt
+params 3360226  avg_nb 8.00  scale 1.195
+non-finite gradient (norm nan, loss 1.244e+05) at epoch 0 step 3996, step skipped
+non-finite gradient (norm nan, loss 4.019e+04) at epoch 0 step 3997, step skipped
+non-finite gradient (norm nan, loss 2.246e+04) at epoch 0 step 3998, step skipped
+non-finite gradient (norm nan, loss 2.309e+04) at epoch 0 step 3999, step skipped
+non-finite gradient (norm nan, loss 6.821e+04) at epoch 0 step 4000, step skipped
+non-finite gradient (norm nan, loss 6.867e+04) at epoch 0 step 4001, step skipped
+non-finite gradient (norm nan, loss 1.007e+05) at epoch 0 step 4002, step skipped
+non-finite gradient (norm nan, loss 6.521e+04) at epoch 0 step 4003, step skipped
+non-finite gradient (norm nan, loss 1.095e+05) at epoch 0 step 4004, step skipped
+non-finite gradient (norm nan, loss 1.293e+05) at epoch 0 step 4005, step skipped
+non-finite gradient (norm nan, loss 1.673e+05) at epoch 0 step 4006, step skipped
+non-finite gradient (norm nan, loss 3.584e+04) at epoch 0 step 4007, step skipped
+non-finite gradient (norm nan, loss 7.698e+04) at epoch 0 step 4008, step skipped
+non-finite gradient (norm nan, loss 1.821e+05) at epoch 0 step 4009, step skipped
+non-finite gradient (norm nan, loss 2.305e+04) at epoch 0 step 4010, step skipped
+non-finite gradient (norm nan, loss 7.183e+04) at epoch 0 step 4011, step skipped
+non-finite gradient (norm nan, loss 1.193e+05) at epoch 0 step 4012, step skipped
+non-finite gradient (norm nan, loss 2.937e+04) at epoch 0 step 4013, step skipped
+non-finite gradient (norm nan, loss 5.434e+04) at epoch 0 step 4014, step skipped
+non-finite gradient (norm nan, loss 3.291e+04) at epoch 0 step 4015, step skipped
+[recovery] restored EMA weights, lr multiplier -> 0.5

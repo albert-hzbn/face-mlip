@@ -1,0 +1,21 @@
+step 20: kept 945/950, mean spread 4.6 meV/A, T 570 K
+step 40: kept 939/950, mean spread 4.6 meV/A, T 550 K
+step 60: kept 946/950, mean spread 4.7 meV/A, T 538 K
+step 80: kept 948/950, mean spread 4.7 meV/A, T 528 K
+step 100: kept 944/950, mean spread 4.5 meV/A, T 532 K
+step 120: kept 948/950, mean spread 4.5 meV/A, T 528 K
+step 140: kept 945/950, mean spread 4.4 meV/A, T 531 K
+step 160: kept 949/950, mean spread 4.5 meV/A, T 525 K
+step 180: kept 946/950, mean spread 4.4 meV/A, T 525 K
+step 200: kept 945/950, mean spread 4.5 meV/A, T 518 K
+step 220: kept 945/950, mean spread 4.5 meV/A, T 515 K
+step 240: kept 947/950, mean spread 4.3 meV/A, T 523 K
+step 260: kept 948/950, mean spread 4.3 meV/A, T 515 K
+step 280: kept 948/950, mean spread 4.3 meV/A, T 510 K
+step 300: kept 947/950, mean spread 4.3 meV/A, T 508 K
+step 320: kept 943/950, mean spread 4.3 meV/A, T 510 K
+step 340: kept 946/950, mean spread 4.2 meV/A, T 514 K
+step 360: kept 947/950, mean spread 4.4 meV/A, T 504 K
+step 380: kept 947/950, mean spread 4.3 meV/A, T 507 K
+step 400: kept 948/950, mean spread 4.3 meV/A, T 505 K
+saved data/distill_md_malonaldehyde.npz: 18921 snapshots, 79 rejected by the uncertainty gate

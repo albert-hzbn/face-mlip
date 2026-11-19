@@ -1,0 +1,3 @@
+distillation: 18872 teacher-labelled + 950x4 DFT configurations
+initialised from runs/eth_gen2_cp160_ethanol_r2.pt
+params 3360226  avg_nb 8.00  scale 1.195
